@@ -13,8 +13,10 @@ module.exports.routes = {
   'POST /auth/signup': 'auth/signup',
   'POST /auth/signin': 'auth/signin',
   'POST /auth/refresh': 'auth/refresh-token',
-  'GET /auth/signout': 'auth/signout',
+  'POST /auth/forgot_password': 'auth/forgot-password',
+  'POST /auth/reset_password': 'auth/reset-password',
 
+  'GET /user/signout': 'user/signout',
   'GET /user/profile': 'user/profile'
 
 };

@@ -44,10 +44,9 @@ module.exports = {
         email: decode.user.email,
       };
       const accessToken = await sails.helpers.refreshToken({ user: payload, issuer: decode.issuer });
-      this.req.session.token = accessToken
+      this.req.session.token = accessToken;
       return exits.success({ message: `${decode.user.email}'s token has been updated`, accessToken});
     });
-    return;
 
   }
 

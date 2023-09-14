@@ -48,9 +48,9 @@ module.exports.datastores = {
     *    (See https://sailsjs.com/config/datastores for help.)                 *
     *                                                                          *
     ***************************************************************************/
-    // adapter: 'sails-mysql',
-    // url: 'mysql://user:password@host:port/database',
 
+    adapter: require('sails-mongo'),
+    url: 'mongodb+srv://lenny:%40Security21@cluster0.836bk4k.mongodb.net/clouder',
   },
 
 

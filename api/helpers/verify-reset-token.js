@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const refreshTokenSecret = process.env.REFRESH_TOKEN_SECRET;
+const resetTokenSecret = process.env.RESET_TOKEN_SECRET;
 
 module.exports = {
 
 
-  friendlyName: 'Verify refresh token',
+  friendlyName: 'Verify reset token',
 
 
   description: '',
@@ -21,7 +21,7 @@ module.exports = {
 
     cb: {
       type: 'ref',
-      required: true
+      required: true,
     }
 
   },
@@ -37,9 +37,7 @@ module.exports = {
 
 
   fn: async function ({token, cb}, exits) {
-
-    return exits.success(jwt.verify(token, refreshTokenSecret, {}, cb));
-
+    return exits.success(jwt.verify(token, resetTokenSecret, {}, cb));
   }
 
 

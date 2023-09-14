@@ -17,7 +17,7 @@ module.exports = {
   },
 
 
-  fn: async function (inputs) {
+  fn: async function () {
 
     // All done.
     return this.req.user;

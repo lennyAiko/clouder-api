@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
+const resetTokenSecret = process.env.RESET_TOKEN_SECRET;
 
 module.exports = {
 
 
-  friendlyName: 'Refresh token',
+  friendlyName: 'Reset token',
 
 
   description: '',
@@ -17,7 +17,7 @@ module.exports = {
     payload: {
       type: 'json',
       required: true
-    }
+    },
 
   },
 
@@ -32,9 +32,9 @@ module.exports = {
 
 
   fn: async function ({payload}, exits) {
-    const accessToken = jwt.sign(payload, accessTokenSecret, {expiresIn: '1h'});
+    const resetToken = jwt.sign(payload, resetTokenSecret, {expiresIn: '5m'});
 
-    return exits.success({ access: accessToken });
+    return exits.success({reset: resetToken});
   }
 
 

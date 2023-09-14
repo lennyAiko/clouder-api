@@ -20,7 +20,7 @@ module.exports = {
 
   exits: {
     success: {
-      statusCode: 200,
+      statusCode: 201,
       description: 'If all credentials are correct'
     },
     badCombo: {
@@ -63,7 +63,7 @@ module.exports = {
       this.req.session.token = token.access;
       message = `${userRecord.email} has logged in`;
     }
-    
+
     return exits.success({
       message,
       access: token.access,

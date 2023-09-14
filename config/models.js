@@ -53,6 +53,9 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
 
+  /*
+  For testing purposes, it is advisable to use drop when you want to run your tests
+  */
   migrate: 'alter',
 
 

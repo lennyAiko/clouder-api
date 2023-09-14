@@ -43,13 +43,14 @@ module.exports = {
     // check if user exists
     let checkUser = await User.findOne({ username: username });
     if (checkUser) {
-      return exits.invalidData;
+      return exits.invalidData({message: 'User already exists'});
     }
 
     // create user and catch error
     try {
       email = email.toLowerCase();
-      let user = await User.create({ id: uuidv4(), username, email, password}).fetch();
+      const hashedPassword = await sails.helpers.passwords.hashPassword(password)
+      let user = await User.create({ id: uuidv4(), username, email, password: hashedPassword}).fetch();
       return exits.success(user);
     } catch (error) {
       return exits.badCombo(error);

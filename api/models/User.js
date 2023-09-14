@@ -11,7 +11,7 @@ module.exports = {
 
     id: {
       type: 'string',
-      required: true
+      columnName: '_id',
     },
 
     username: {
@@ -39,18 +39,6 @@ module.exports = {
   customToJSON: function () {
     return _.omit(this, ['password', 'createdAt', 'updatedAt']);
   },
-
-  beforeCreate: async function (valueToSet, proceed) {
-    sails.helpers.passwords
-      .hashPassword(valueToSet.password)
-      .exec((err, hashedPassword) => {
-        if(err) {
-          return proceed(err);
-        }
-        valueToSet.password = hashedPassword;
-        return proceed();
-      });
-  }
 
 };
 
