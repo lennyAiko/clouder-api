@@ -266,7 +266,7 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     onlyAllowOrigins: [
-      'https://clouder-lkvb.onrender.com/',  
+      'https://clouder-lkvb.onrender.com',  
     ],
 
 
