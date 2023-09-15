@@ -11,7 +11,9 @@ module.exports = {
 
   inputs: {
 
-    username: { type: 'string', required: true },
+    firstName: { type: 'string', required: true },
+    lastName: { type: 'string', required: true },
+    location: { type: 'string' },
     email: { type: 'string', required: true, isEmail: true },
     password: { type: 'string', required: true, protect: true }
 
@@ -38,24 +40,23 @@ module.exports = {
   },
 
 
-  fn: async function ({username, email, password}, exits) {
-
+  fn: async function ({firstName, lastName, location, email, password}, exits) {
+    
+    email = email.toLowerCase();
     // check if user exists
-    let checkUser = await User.findOne({ username: username });
+    let checkUser = await User.findOne({ email });
     if (checkUser) {
       return exits.invalidData({message: 'User already exists'});
     }
 
     // create user and catch error
     try {
-      email = email.toLowerCase();
       const hashedPassword = await sails.helpers.passwords.hashPassword(password)
-      let user = await User.create({ id: uuidv4(), username, email, password: hashedPassword}).fetch();
+      let user = await User.create({ firstName, lastName, location, email, password: hashedPassword}).fetch();
       return exits.success(user);
     } catch (error) {
       return exits.badCombo(error);
     }
   }
-
 
 };

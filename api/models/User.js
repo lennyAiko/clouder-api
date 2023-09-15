@@ -14,11 +14,16 @@ module.exports = {
       columnName: '_id',
     },
 
-    username: {
+    firstName: {
       type: 'string',
       required: true,
       maxLength: 60,
-      unique: true
+    },
+
+    lastName: {
+      type: 'string',
+      required: true,
+      maxLength: 60
     },
 
     email: {
@@ -26,6 +31,11 @@ module.exports = {
       required: true,
       isEmail: true,
       unique: true
+    },
+
+    location: {
+      type: 'string',
+      maxLength: 60
     },
 
     password: {

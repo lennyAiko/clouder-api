@@ -12,7 +12,7 @@ module.exports = {
 
   inputs: {
 
-    username: { type: 'string', required: true },
+    email: { type: 'string', required: true, isEmail: true },
     password: { type: 'string', required: true, protect: true }
 
   },
@@ -30,9 +30,11 @@ module.exports = {
   },
 
 
-  fn: async function ({username, password}, exits) {
+  fn: async function ({email, password}, exits) {
 
-    let userRecord = await User.findOne({ username: username });
+    email = email.toLowerCase()
+
+    let userRecord = await User.findOne({ email });
     if (!userRecord) {
       return exits.badCombo({
         error: 'Invalid credentials'
@@ -47,28 +49,33 @@ module.exports = {
       });
     });
 
-    const payload = {
-      id: userRecord.id,
-      username: userRecord.username,
-      email: userRecord.email
-    };
-
-    const token = await sails.helpers.signToken({user: payload, issuer: tokenIssuer});
-
+    const token = await sails.helpers.signToken({
+      user: {
+        id: userRecord.id,
+        firstName: userRecord.firstName,
+        lastName: userRecord.lastName,
+        email: userRecord.email,
+        location: userRecord.location ? userRecord.location : null
+      }, 
+      issuer: tokenIssuer
+    });
+    
+    let TokenRecord = await Token.findOne({ userId: userRecord.id })
+    
     var message;
-    if (this.req.session.token) {
-      this.req.session.token = token.access;
+    if (TokenRecord) {
+      await Token.updateOne({ userId: userRecord.id })
+      .set({ token: token.access })
       message = `${userRecord.email} has an active token, token updated`;
     } else {
-      this.req.session.token = token.access;
+      await Token.create({ userId: userRecord.id, token: token.access })
       message = `${userRecord.email} has logged in`;
     }
 
     return exits.success({
       message,
       access: token.access,
-      refresh: token.refresh,
-      data: userRecord
+      refresh: token.refresh
     });
 
   }
