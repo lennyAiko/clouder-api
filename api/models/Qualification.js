@@ -12,9 +12,16 @@ module.exports = {
     education: {
       type: 'json',
       custom: function (value) {
-        return  
+        const checkValues = ["degree", "year", "institution", "certificate"]
+        for (i in value) {
+          for (key in value[i]) {
+            checkValues.includes(key)
+          }
+        }
       }
-    }
+    },
+
+    
 
   },
 
