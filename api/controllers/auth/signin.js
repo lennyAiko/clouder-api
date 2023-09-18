@@ -52,8 +52,7 @@ module.exports = {
     const token = await sails.helpers.signToken({
       user: {
         id: userRecord.id,
-        firstName: userRecord.firstName,
-        lastName: userRecord.lastName,
+        fullName: userRecord.fullName,
         email: userRecord.email,
         location: userRecord.location ? userRecord.location : null
       }, 

@@ -14,16 +14,10 @@ module.exports = {
       columnName: '_id',
     },
 
-    firstName: {
+    fullName: {
       type: 'string',
       required: true,
-      maxLength: 60,
-    },
-
-    lastName: {
-      type: 'string',
-      required: true,
-      maxLength: 60
+      maxLength: 120
     },
 
     email: {
