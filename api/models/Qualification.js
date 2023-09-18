@@ -12,7 +12,7 @@ module.exports = {
     education: {
       type: 'json',
       custom: function (value) {
-        return 
+        return  
       }
     }
 
