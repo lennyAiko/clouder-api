@@ -9,11 +9,6 @@ module.exports = {
 
   attributes: {
 
-    id: {
-      type: 'string',
-      columnName: '_id'
-    },
-
     userId: {
       type: 'string',
       required: true,

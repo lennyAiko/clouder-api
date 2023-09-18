@@ -9,11 +9,6 @@ module.exports = {
 
   attributes: {
 
-    id: {
-      type: 'string',
-      columnName: '_id',
-    },
-
     fullName: {
       type: 'string',
       required: true,
@@ -25,6 +20,11 @@ module.exports = {
       required: true,
       isEmail: true,
       unique: true
+    },
+
+    phone: {
+      type: 'string',
+      maxLength: 11
     },
 
     location: {
