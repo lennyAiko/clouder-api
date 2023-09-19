@@ -23,5 +23,6 @@ module.exports.routes = {
   'PATCH /qualifications/:id': 'qualification/update',
   'GET /qualifications/:id': 'qualification/read',
   'GET /qualifications/': 'qualification/fetch',
+  'DELETE /qualifications/:id': 'qualification/delete',
 
 };
