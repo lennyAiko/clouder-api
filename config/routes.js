@@ -22,5 +22,6 @@ module.exports.routes = {
   'POST /qualifications': 'qualification/create',
   'PATCH /qualifications/:id': 'qualification/update',
   'GET /qualifications/:id': 'qualification/read',
+  'GET /qualifications/': 'qualification/fetch',
 
 };
