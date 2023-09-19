@@ -38,6 +38,12 @@ module.exports = {
       protect: true
     },
 
+    // references
+    qualifications: {
+      collection: 'qualification',
+      via: 'owner'
+    }
+
   },
 
   customToJSON: function () {

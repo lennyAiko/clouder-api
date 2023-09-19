@@ -39,7 +39,10 @@ module.exports = {
 
   fn: async function ({education, challenges, keyPositives, doDifferently}) {
 
+    
+
     let qualificationRecord = await Qualification.create({
+      user: this.req.user.id, 
       education, challenges, keyPositives, doDifferently
     }).fetch()
 

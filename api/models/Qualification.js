@@ -43,7 +43,10 @@ module.exports = {
       required: true,
     },
     
-
+    // reference to user
+    owner: {
+      model: 'user'
+    }
   },
 
 };
