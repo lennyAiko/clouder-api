@@ -9,6 +9,26 @@ module.exports = {
 
   inputs: {
 
+    education: {
+      type: 'json',
+      required: true
+    },
+
+    challenges: {
+      type: 'string',
+      required: true,
+    },
+
+    keyPositives: {
+      type: 'string',
+      required: true,
+    },
+
+    doDifferently: {
+      type: 'string',
+      required: true
+    }
+
   },
 
 
@@ -17,10 +37,14 @@ module.exports = {
   },
 
 
-  fn: async function (inputs) {
+  fn: async function ({education, challenges, keyPositives, doDifferently}) {
+
+    let qualificationRecord = await Qualification.create({
+      education, challenges, keyPositives, doDifferently
+    }).fetch()
 
     // All done.
-    return;
+    return qualificationRecord;
 
   }
 

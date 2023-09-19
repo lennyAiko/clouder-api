@@ -11,16 +11,37 @@ module.exports = {
     
     education: {
       type: 'json',
+      required: true,
       custom: function (value) {
         const checkValues = ["degree", "year", "institution", "certificate"]
+        let store = [], holder = []
         for (i in value) {
-          for (key in value[i]) {
-            checkValues.includes(key)
-          }
+          for (obj in value[i]) { store.push(obj) }
+          holder.push(store)
+          store = []
         }
+        for (i in holder) {
+          if (JSON.stringify(holder[i]) == JSON.stringify(checkValues)) { continue } 
+          else { return false }
+        }
+        return true
       }
     },
 
+    challenges: {
+      type: 'string',
+      required: true
+    },
+
+    keyPositives: {
+      type: 'string',
+      required: true
+    },
+
+    doDifferently: {
+      type: 'string',
+      required: true,
+    },
     
 
   },

@@ -61,18 +61,14 @@ module.exports = {
     
     let TokenRecord = await Token.findOne({ userId: userRecord.id })
     
-    var message;
     if (TokenRecord) {
       await Token.updateOne({ userId: userRecord.id })
       .set({ token: token.access })
-      message = `${userRecord.email} has an active token, token updated`;
     } else {
       await Token.create({ userId: userRecord.id, token: token.access })
-      message = `${userRecord.email} has logged in`;
     }
 
     return exits.success({
-      message,
       access: token.access,
       refresh: token.refresh
     });

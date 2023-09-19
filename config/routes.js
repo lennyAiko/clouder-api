@@ -17,6 +17,8 @@ module.exports.routes = {
   'POST /auth/reset_password': 'auth/reset-password',
 
   'GET /user/signout': 'user/signout',
-  'GET /user/profile': 'user/profile'
+  'GET /user/profile': 'user/profile',
+
+  'POST /qualifications': 'qualification/create'
 
 };
