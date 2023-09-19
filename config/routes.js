@@ -20,6 +20,7 @@ module.exports.routes = {
   'GET /user/profile': 'user/profile',
 
   'POST /qualifications': 'qualification/create',
-  'PATCH /qualifications/:id': 'qualification/update'
+  'PATCH /qualifications/:id': 'qualification/update',
+  'GET /qualifications/:id': 'qualification/read',
 
 };
