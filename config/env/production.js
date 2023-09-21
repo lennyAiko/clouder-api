@@ -148,12 +148,7 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     cors: {
-      allowOrigins: [
-        'http://localhost:3000',
-        'http://localhost:3001',
-        'http://localhost:3002',
-        'https://clouder-gamma.vercel.app'
-      ]
+      allowOrigins: '*'
     },
 
   },
