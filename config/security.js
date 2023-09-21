@@ -36,7 +36,7 @@ module.exports.security = {
       'http://localhost:3002',
       'https://clouder-gamma.vercel.app'
     ],
-    allowCredentials: false,
+    allowCredentials: true,
   },
 
 
