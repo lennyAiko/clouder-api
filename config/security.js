@@ -30,8 +30,15 @@ module.exports.security = {
 
   cors: {
     allRoutes: true,
-    allowOrigins: '*',
-    allowCredentials: false,
+    allowOrigins:  [
+      'http://localhost:3000',
+      'http://localhost:3001',
+      'http://localhost:3002',
+      'https://clouder-gamma.vercel.app'
+    ],
+    allowCredentials: true,
+    allowRequestHeaders: 'Authorization, Content-Type, Origin, X-Requested-With, Accept',
+    allowRequestMethods: 'GET,PUT,POST,PATCH,OPTIONS,DELETE,HEAD'
   },
 
 
