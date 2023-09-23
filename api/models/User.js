@@ -42,6 +42,11 @@ module.exports = {
     qualifications: {
       collection: 'qualification',
       via: 'owner'
+    },
+
+    logbook: {
+      collection: 'logbook',
+      via: 'owner'
     }
 
   },
