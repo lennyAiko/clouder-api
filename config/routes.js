@@ -25,4 +25,6 @@ module.exports.routes = {
   'GET /qualifications/': 'qualification/fetch',
   'DELETE /qualifications/:id': 'qualification/delete',
 
+  'POST /logbooks': 'logbook/create'
+
 };

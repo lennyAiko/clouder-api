@@ -11,7 +11,7 @@ module.exports = {
 
     action: {
       type: 'string',
-      isin: ["Observe", "Assist", "Perform"],
+      isIn: ["Observe", "Assist", "Perform"],
       required: true
     },
 
