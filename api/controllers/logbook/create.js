@@ -7,8 +7,19 @@ module.exports = {
   description: 'Create logbook.',
 
 
+  inputs: {
 
-  
+    action: { type: 'string' },
+    firstTitle: { type: 'string' },
+    firstYear: { type: 'string' },
+    secondTitle: { type: 'string' },
+    secondYear: { type: 'string' },
+    summary: { type: 'string' },
+    challenges: { type: 'string' },
+    keyPositives: { type: 'string' },
+    doDifferently: { type: 'string' },
+
+  },
 
 
   exits: {
@@ -16,56 +27,49 @@ module.exports = {
   },
 
 
-  fn: async function ({action, firstTitle, firstYear, firstDocument, secondTitle, secondYear, secondDocument, 
+  fn: async function ({action, firstTitle, firstYear, secondTitle, secondYear, 
     summary, challenges, keyPositives, doDifferently}) {
 
-    if (firstDocument) {
-        this.req.file('firstDocument').upload({
-        maxBytes: 5000000, //5MB
-        dirname: require('path').resolve(sails.config.appPath, 'assets/docs')
-      }, function whenDone(err, uploadFiles) {
-          if (err) {
-            return this.res.status(500).json({message: 'No file was uploaded'})
-          }
-
-          if (uploadFiles.length === 0) {
-            return this.res.status(500).json({message: 'No file was uploaded'})
-          }
-
-          firstDocument = uploadFiles
-        }
-      )
-    }
-    
-    if (secondDocument) {
-        this.req.file('secondDocument').upload({
-        maxBytes: 5000000, //5MB
-        dirname: require('path').resolve(sails.config.appPath, 'assets/docs')
-      }, function whenDone(err, uploadFiles) {
-          if (err) {
-            return this.res.status(500).json(err)
-          }
-
-          if (uploadFiles.length === 0) {
-            return this.res.status(500).json(err)
-          }
-
-          secondDocument = uploadFiles
-        }
-      )
-    }
-
     let logbookRecord = await Logbook.create({ 
-      action, firstTitle, firstYear, 
-      firstDocument: "A file", 
-      secondTitle, secondYear, 
-      secondDocument: `${this.req.user}`, 
-      summary, challenges, keyPositives, doDifferently,
+      action, firstTitle, firstYear, secondTitle, secondYear, summary,
+      challenges, keyPositives, doDifferently,
       owner: this.req.user.id
     }).fetch()
-    
+
+    this.req.file('firstDocument').upload({
+      maxBytes: 5000000, //5MB
+      dirname: require('path').resolve(sails.config.appPath, 'assets/docs')
+    }, async function whenDone(err, uploadFiles) {
+        if (err) {
+          return this.res.status(500).json({message: 'No file was uploaded'})
+        }
+
+        if (uploadFiles.length > 0) {
+          await Logbook.updateOne({ id : logbookRecord.id })
+          .set({ firstDocument : uploadFiles[0].fd })
+        }
+        
+      }
+    )
+
+    this.req.file('secondDocument').upload({
+      maxBytes: 5000000, //5MB
+      dirname: require('path').resolve(sails.config.appPath, 'assets/docs')
+    }, async function whenDone(err, uploadFiles) {
+        if (err) {
+          return this.res.status(500).json({message: 'No file was uploaded'})
+        }
+        
+        if (uploadFiles.length > 0) {
+          await Logbook.updateOne({ id : logbookRecord.id })
+          .set({ secondDocument : uploadFiles[0].fd })
+        }
+
+      }
+    )
+
     // All done.
-    return logbookRecord;
+    return "Successful"
 
   }
 
