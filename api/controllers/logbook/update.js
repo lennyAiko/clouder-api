@@ -37,40 +37,49 @@ module.exports = {
     })
 
     this.req.file('firstDocument').upload({
-      maxBytes: 5000000, //5MB
-      dirname: require('path').resolve(sails.config.appPath, 'assets/docs')
+      maxBytes: 5000000, // 5MB
+      dirname: require('path').resolve(sails.config.appPath, '.tmp/public'),
+      saveAs: function(file, cb) {
+        firstRandomName = `${randomStrings()}_${file.filename}`
+        cb(null, firstRandomName);
+      }
     }, async function whenDone(err, uploadFiles) {
         if (err) {
           return this.res.status(500).json({message: 'No file was uploaded'})
         }
+        
+        docUrl = require('util').format(`http://localhost:1337/${firstRandomName}`)
 
         if (uploadFiles.length > 0) {
           await Logbook.updateOne({ id : logbookRecord.id })
-          .set({ firstDocument : uploadFiles[0].fd })
+          .set({ firstDocument : docUrl })
         }
-        
       }
     )
 
     this.req.file('secondDocument').upload({
       maxBytes: 5000000, //5MB
-      dirname: require('path').resolve(sails.config.appPath, 'assets/docs')
+      dirname: require('path').resolve(sails.config.appPath, '.tmp/public'),
+      saveAs: function(file, cb) {
+        secondRandomName = `${randomStrings()}_${file.filename}`
+        cb(null, secondRandomName);
+      }
     }, async function whenDone(err, uploadFiles) {
         if (err) {
           return this.res.status(500).json({message: 'No file was uploaded'})
         }
-        
+       
+        docUrl = require('util').format(`http://localhost:1337/${secondRandomName}`)
+
         if (uploadFiles.length > 0) {
           await Logbook.updateOne({ id : logbookRecord.id })
-          .set({ secondDocument : uploadFiles[0].fd })
+          .set({ secondDocument : docUrl })
         }
-
       }
     )
     // All done.
     return "Successful";
 
   }
-
 
 };
