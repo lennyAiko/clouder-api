@@ -47,6 +47,8 @@
 .env
 .nyc_output/
 config/local.js
+assets/docs
+assets/images
 
 
 ################################################

@@ -1,10 +1,10 @@
 module.exports = {
 
 
-  friendlyName: 'Create',
+  friendlyName: 'Update',
 
 
-  description: 'Create logbook.',
+  description: 'Update logbook.',
 
 
   inputs: {
@@ -30,11 +30,11 @@ module.exports = {
   fn: async function ({action, firstTitle, firstYear, secondTitle, secondYear, 
     summary, challenges, keyPositives, doDifferently}) {
 
-    let logbookRecord = await Logbook.create({ 
+    let logbookRecord = await Logbook.updateOne({ id : this.req.params.id })
+    .set({ 
       action, firstTitle, firstYear, secondTitle, secondYear, summary,
-      challenges, keyPositives, doDifferently,
-      owner: this.req.user.id
-    }).fetch()
+      challenges, keyPositives, doDifferently
+    })
 
     this.req.file('firstDocument').upload({
       maxBytes: 5000000, //5MB
@@ -67,9 +67,8 @@ module.exports = {
 
       }
     )
-
     // All done.
-    return "Successful"
+    return "Successful";
 
   }
 

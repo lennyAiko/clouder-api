@@ -11,22 +11,18 @@ module.exports = {
     
     education: {
       type: 'json',
-      required: true
     },
 
     challenges: {
       type: 'string',
-      required: true,
     },
 
     keyPositives: {
       type: 'string',
-      required: true,
     },
 
     doDifferently: {
       type: 'string',
-      required: true
     }
 
   },

@@ -58,15 +58,21 @@ module.exports = {
       }, 
       issuer: tokenIssuer
     });
+
+    await sails.getDatastore()
+    .leaseConnection(async (db) => {
+      let TokenRecord = await Token.findOne({ userId: userRecord.id })
+      .usingConnection(db)
     
-    let TokenRecord = await Token.findOne({ userId: userRecord.id })
-    
-    if (TokenRecord) {
-      await Token.updateOne({ userId: userRecord.id })
-      .set({ token: token.access })
-    } else {
-      await Token.create({ userId: userRecord.id, token: token.access })
-    }
+      if (TokenRecord) {
+        await Token.updateOne({ userId: userRecord.id })
+        .set({ token: token.access })
+        .usingConnection(db)
+      } else {
+        await Token.create({ userId: userRecord.id, token: token.access })
+        .usingConnection(db)
+      }
+    })
 
     return exits.success({
       access: token.access,
