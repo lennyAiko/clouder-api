@@ -67,7 +67,6 @@ module.exports = {
 
       }
     )
-    console.log(logbookRecord)
     // All done.
     return "Successful";
 
