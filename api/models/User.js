@@ -47,6 +47,11 @@ module.exports = {
     logbook: {
       collection: 'logbook',
       via: 'owner'
+    },
+
+    course: {
+      collection: 'course',
+      via: 'owner'
     }
 
   },
