@@ -27,6 +27,8 @@ module.exports.routes = {
 
   'POST /logbooks': 'logbook/create',
   'GET /logbooks/:id': 'logbook/read',
-  'GET /logbooks': 'logbook/fetch'
+  'GET /logbooks': 'logbook/fetch',
+  'PATCH /logbooks/:id': 'logbook/update'
+
 
 };
