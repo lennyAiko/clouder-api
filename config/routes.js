@@ -32,6 +32,7 @@ module.exports.routes = {
   'DELETE /logbooks/:id': 'logbook/delete',
 
   'POST /courses': 'course/create',
+  'GET /courses/:id': 'course/read',
 
 
 };
