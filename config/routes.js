@@ -35,5 +35,6 @@ module.exports.routes = {
   'GET /courses': 'course/fetch',
   'GET /courses/:id': 'course/read',
   'PATCH /courses/:id': 'course/update',
+  'DELETE /courses/:id': 'course/delete',
 
 };
