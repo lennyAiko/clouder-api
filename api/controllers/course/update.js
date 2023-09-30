@@ -1,61 +1,46 @@
 require('dotenv').config()
 const UPLOAD_URL = process.env.UPLOAD_URL
 
-function randomStrings(length, chars) {
-  var length = 16
-  var result = ''
-  var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'
-  for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))]
-  return result
-}
-
 module.exports = {
 
 
-  friendlyName: 'Create',
+  friendlyName: 'Update',
 
 
-  description: 'Create course.',
+  description: 'Update course.',
 
 
   inputs: {
-
+    
     courseTitle: {
       type: 'string',
-      required: true,
       maxLength: 150
     },
 
     institution: {
       type: 'string',
-      required: true,
       maxLength: 250
     },
 
     year: {
       type: 'string',
-      required: true,
       maxLength: 4
     },
 
     certificateNo: {
       type: 'string',
-      required: true,
     },
 
     challenges: {
       type: 'string',
-      required: true,
     },
     
     keyPositives: {
       type: 'string',
-      required: true,
     },
     
     doDifferently: {
       type: 'string',
-      required: true,
     }
 
   },
@@ -91,9 +76,10 @@ module.exports = {
       }
     )
 
-    let courseRecord = await Course.create({courseTitle, institution, year, certificateNo, challenges, 
-      keyPositives, doDifferently, owner: this.req.user.id
-    }).fetch()
+    let courseRecord = await Course.updateOne({ id: this.req.params.id})
+    .set({courseTitle, institution, year, certificateNo, challenges, 
+      keyPositives, doDifferently
+    })
 
     // All done.
     return "Successful";

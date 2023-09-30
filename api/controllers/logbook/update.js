@@ -33,6 +33,8 @@ module.exports = {
   fn: async function ({action, firstTitle, firstYear, secondTitle, secondYear, 
     summary, challenges, keyPositives, doDifferently}) {
 
+    let firstRandomName, secondRandomName
+
     let logbookRecord = await Logbook.updateOne({ id : this.req.params.id })
     .set({ 
       action, firstTitle, firstYear, secondTitle, secondYear, summary,
