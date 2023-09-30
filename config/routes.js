@@ -29,7 +29,9 @@ module.exports.routes = {
   'GET /logbooks/:id': 'logbook/read',
   'GET /logbooks': 'logbook/fetch',
   'PATCH /logbooks/:id': 'logbook/update',
-  'DELETE /logbooks/:id': 'logbook/delete'
+  'DELETE /logbooks/:id': 'logbook/delete',
+
+  'POST /courses': 'course/create',
 
 
 };
