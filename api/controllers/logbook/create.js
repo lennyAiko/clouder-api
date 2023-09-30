@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 function randomStrings(length, chars) {
   var length = 16
   var result = ''
@@ -59,7 +61,7 @@ module.exports = {
           return this.res.status(500).json({message: 'No file was uploaded'})
         }
 
-        docUrl = require('util').format(`http://localhost:1337/${firstRandomName}`)
+        docUrl = require('util').format(`${UPLOAD_URL}/${firstRandomName}`)
 
         if (uploadFiles.length > 0) {
           await Logbook.updateOne({ id : logbookRecord.id })
@@ -80,7 +82,7 @@ module.exports = {
           return this.res.status(500).json({message: 'No file was uploaded'})
         }
         
-        docUrl = require('util').format(`http://localhost:1337/${secondRandomName}`)
+        docUrl = require('util').format(`${UPLOAD_URL}/${secondRandomName}`) 
 
         if (uploadFiles.length > 0) {
           await Logbook.updateOne({ id : logbookRecord.id })
