@@ -44,12 +44,6 @@ module.exports = {
     let userId = this.req.user.id
     let firstRandomName, secondRandomName
 
-    let logbookRecord = await Logbook.create({ 
-      action, firstTitle, firstYear, secondTitle, secondYear, summary,
-      challenges, keyPositives, doDifferently,
-      owner: userId
-    }).fetch()
-
     this.req.file('firstDocument').upload({
       maxBytes: 5000000, // 5MB
       dirname: require('path').resolve(sails.config.appPath, '.tmp/public'),
@@ -92,6 +86,12 @@ module.exports = {
       }
     )
 
+    let logbookRecord = await Logbook.create({ 
+      action, firstTitle, firstYear, secondTitle, secondYear, summary,
+      challenges, keyPositives, doDifferently,
+      owner: userId
+    }).fetch()
+    
     // All done.
     return "Successful"
   }

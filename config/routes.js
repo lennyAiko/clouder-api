@@ -20,16 +20,21 @@ module.exports.routes = {
   'GET /user/profile': 'user/profile',
 
   'POST /qualifications': 'qualification/create',
-  'PATCH /qualifications/:id': 'qualification/update',
+  'GET /qualifications': 'qualification/fetch',
   'GET /qualifications/:id': 'qualification/read',
-  'GET /qualifications/': 'qualification/fetch',
+  'PATCH /qualifications/:id': 'qualification/update',
   'DELETE /qualifications/:id': 'qualification/delete',
 
   'POST /logbooks': 'logbook/create',
-  'GET /logbooks/:id': 'logbook/read',
   'GET /logbooks': 'logbook/fetch',
+  'GET /logbooks/:id': 'logbook/read',
   'PATCH /logbooks/:id': 'logbook/update',
-  'DELETE /logbooks/:id': 'logbook/delete'
+  'DELETE /logbooks/:id': 'logbook/delete',
 
+  'POST /courses': 'course/create',
+  'GET /courses': 'course/fetch',
+  'GET /courses/:id': 'course/read',
+  'PATCH /courses/:id': 'course/update',
+  'DELETE /courses/:id': 'course/delete',
 
 };

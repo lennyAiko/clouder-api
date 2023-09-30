@@ -12,7 +12,7 @@ module.exports = {
     courseTitle: {
       type: 'string',
       required: true,
-      maxLength: 30
+      maxLength: 150
     },
 
     institution: {
