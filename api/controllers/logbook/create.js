@@ -1,4 +1,5 @@
 require('dotenv').config()
+const UPLOAD_URL = process.env.UPLOAD_URL
 
 function randomStrings(length, chars) {
   var length = 16
