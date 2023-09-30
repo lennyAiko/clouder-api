@@ -33,6 +33,6 @@ module.exports.routes = {
 
   'POST /courses': 'course/create',
   'GET /courses/:id': 'course/read',
-
+  'GET /courses': 'course/fetch',
 
 };
