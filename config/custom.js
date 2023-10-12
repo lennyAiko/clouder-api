@@ -19,4 +19,11 @@ module.exports.custom = {
   // stripeSecret: 'sk_test_Zzd814nldl91104qor5911gjald',
   // …
 
+  baseUrl: process.env.UPLOAD_URL,
+
+  passwordResetTokenTTL: 24 * 60 * 60 * 1000, // 24 hours
+  emailProofTokenTTL: 24 * 60 * 60 * 1000, // 24 hours
+
+  verifyEmail: false
+
 };
