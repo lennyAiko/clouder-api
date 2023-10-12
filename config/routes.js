@@ -15,6 +15,8 @@ module.exports.routes = {
   'POST /auth/refresh': 'auth/refresh-token',
   'POST /auth/forgot_password': 'auth/forgot-password',
   'POST /auth/reset_password': 'auth/reset-password',
+  'GET /verify-email': 'auth/verify-email',
+  'GET /verified': 'auth/verified',
 
   'GET /user/signout': 'user/signout',
   'GET /user/profile': 'user/profile',
