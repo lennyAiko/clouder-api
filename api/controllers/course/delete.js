@@ -19,10 +19,10 @@ module.exports = {
 
   fn: async function (inputs) {
 
-    await Course.destroyOne({ id : this.req.params.id })
+    await Course.destroyOne({ id : this.req.params.id });
 
     // All done.
-    return "Successful";
+    return 'Successful';
 
   }
 

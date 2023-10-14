@@ -1,12 +1,12 @@
-require('dotenv').config()
-const UPLOAD_URL = process.env.UPLOAD_URL
+require('dotenv').config();
+const UPLOAD_URL = process.env.UPLOAD_URL;
 
 function randomStrings(length, chars) {
-  var length = 16
-  var result = ''
-  var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'
-  for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))]
-  return result
+  var length = 16;
+  var result = '';
+  var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_';
+  for (var i = length; i > 0; --i) {result += chars[Math.round(Math.random() * (chars.length - 1))];}
+  return result;
 }
 
 module.exports = {
@@ -47,12 +47,12 @@ module.exports = {
       type: 'string',
       required: true,
     },
-    
+
     keyPositives: {
       type: 'string',
       required: true,
     },
-    
+
     doDifferently: {
       type: 'string',
       required: true,
@@ -68,35 +68,35 @@ module.exports = {
 
   fn: async function ({courseTitle, institution, year, certificateNo, challenges, keyPositives, doDifferently}) {
 
-    let documentRandomName
+    let documentRandomName;
 
     this.req.file('document').upload({
       maxBytes: 5000000, // 5MB
       dirname: require('path').resolve(sails.config.appPath, '.tmp/public'),
       saveAs: function(file, cb) {
-        documentRandomName = `${randomStrings()}_${file.filename}`
+        documentRandomName = `${randomStrings()}_${file.filename}`;
         cb(null, documentRandomName);
       }
     }, async function whenDone(err, uploadFiles) {
-        if (err) {
-          return this.res.status(500).json({message: 'No file was uploaded'})
-        }
-
-        docUrl = require('util').format(`${UPLOAD_URL}/${documentRandomName}`)
-
-        if (uploadFiles.length > 0) {
-          await Course.updateOne({ id : courseRecord.id })
-          .set({ document : docUrl })
-        }
+      if (err) {
+        return this.res.status(500).json({message: 'No file was uploaded'});
       }
-    )
 
-    let courseRecord = await Course.create({courseTitle, institution, year, certificateNo, challenges, 
+      docUrl = require('util').format(`${UPLOAD_URL}/${documentRandomName}`);
+
+      if (uploadFiles.length > 0) {
+        await Course.updateOne({ id : courseRecord.id })
+          .set({ document : docUrl });
+      }
+    }
+    );
+
+    let courseRecord = await Course.create({courseTitle, institution, year, certificateNo, challenges,
       keyPositives, doDifferently, owner: this.req.user.id
-    }).fetch()
+    }).fetch();
 
     // All done.
-    return "Successful";
+    return 'Successful';
 
   }
 

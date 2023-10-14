@@ -21,13 +21,13 @@ module.exports = {
   exits: {
 
     success: {
-      statusCode: 200,
-      description: 'All good'
+      description: 'All good',
+      responseType: 'ok'
     },
 
     notFound: {
-      statusCode: 400,
       description: 'User not found',
+      responseType: 'notFound'
     }
   },
 
@@ -37,14 +37,29 @@ module.exports = {
     email = email.toLowerCase();
 
     let userRecord = await User.findOne({ email: email });
-
     if (!userRecord) {
       return exits.notFound('User not found');
     }
 
-    const resetToken = await sails.helpers.resetToken({ email: email });
+    const resetToken = await sails.helpers.strings.random('url-friendly')
 
-    return exits.success(resetToken);
+    await User.updateOne({ id: userRecord.id })
+    .set({
+      passwordResetToken: resetToken,
+      passwordResetTokenExpiresAt: Date.now() + sails.config.custom.passwordResetTokenTTL
+    })
+
+    await sails.helpers.mail.send.with({
+      to: userRecord.email,
+      subject: 'Password reset instructions',
+      template: 'email-reset-password',
+      templateData: {
+        fullName: userRecord.fullName,
+        token: resetToken
+      }
+    })
+
+    return exits.success('Check email');
 
   }
 

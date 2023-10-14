@@ -1,4 +1,4 @@
-# sails-jwt-template
+# cLOUDER API
 
 a [Sails v1](https://sailsjs.com) application
 

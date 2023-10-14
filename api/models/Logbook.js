@@ -11,7 +11,7 @@ module.exports = {
 
     action: {
       type: 'string',
-      isIn: ["Observe", "Assist", "Perform"],
+      isIn: ['Observe', 'Assist', 'Perform'],
       required: true
     },
 
@@ -62,7 +62,7 @@ module.exports = {
       type: 'string',
       required: true,
     },
-    
+
     // reference to user
     owner: {
       model: 'user'

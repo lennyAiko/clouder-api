@@ -19,51 +19,53 @@ module.exports = {
   exits: {
 
     success: {
-      statusCode: 200,
-      responseType: 'redirect'
+      description: 'The token is accepted and the user is verified',
+      responseType: 'ok'
     },
 
     invalidOrExpiredToken: {
-      statusCode: 400,
+      description: 'The token is expired or invalid',
+      responseType: 'badRequest'
     },
 
     emailAlreadyInUse: {
-      statusCode: 409,
+      description: 'The email to be verified already exists',
+      responseType: 'conflicted'
     }
 
   },
 
 
-  fn: async function ({token}) {
+  fn: async function ({token}, exits) {
 
     if (!token) {
-      throw 'invalidOrExpiredToken'
+      throw {invalidOrExpiredToken: 'The token is expired or invalid, Please sign up again'};
     }
 
-    let userRecord = await User.findOne({ emailProofToken: token })
-    
+    let userRecord = await User.findOne({ emailProofToken: token });
+
     if (!userRecord || userRecord.emailProofTokenExpiresAt <= Date.now()) {
-      throw 'invalidOrExpiredToken'
+      throw {invalidOrExpiredToken: 'The token is expired or invalid, Please sign up again'};
     }
 
     if (userRecord.emailStatus == 'unverified') {
       await User.updateOne({ id: userRecord.id })
-      .set({ 
+      .set({
         emailStatus: 'verified',
         emailProofToken: '',
         emailProofTokenExpiresAt: 0
-      })
-      
-      return '/verified'
+      });
+
+      return exits.success('User verified');
     } else if (userRecord.emailStatus == 'change-requested') {
       if (!userRecord.emailChangeCandidate) {
         throw new Error(
           'Could not update user'
-        )
+        );
       }
 
       if ((await User.count({ email: userRecord.emailChangeCandidate })) > 0) {
-        throw 'emailAlreadyInUse'
+        throw {emailAlreadyInUse: "Email already exists"};
       }
 
       await User.updateOne({ id: userRecord.id })
@@ -71,12 +73,12 @@ module.exports = {
         emailStatus: 'confirmed',
         emailProofToken: '',
         emailProofTokenExpiresAt: 0
-      })
-      return '/'
+      });
+      return exits.success('User confirmed');
     } else {
       throw new Error(
         'Consistency violation'
-      )
+      );
     }
 
   }

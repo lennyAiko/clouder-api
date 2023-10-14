@@ -19,7 +19,7 @@ module.exports = {
 
   fn: async function (inputs) {
 
-    let courseRecords = await Course.find({ owner: this.req.user.id })
+    let courseRecords = await Course.find({ owner: this.req.user.id });
 
     // All done.
     return courseRecords;

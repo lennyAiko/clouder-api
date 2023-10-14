@@ -50,7 +50,7 @@ module.exports = {
       type: 'string',
       required: true,
     },
-    
+
     // reference to user
     owner: {
       model: 'user'

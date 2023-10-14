@@ -1,5 +1,5 @@
-require('dotenv').config()
-const UPLOAD_URL = process.env.UPLOAD_URL
+require('dotenv').config();
+const UPLOAD_URL = process.env.UPLOAD_URL;
 
 module.exports = {
 
@@ -30,60 +30,60 @@ module.exports = {
   },
 
 
-  fn: async function ({action, firstTitle, firstYear, secondTitle, secondYear, 
+  fn: async function ({action, firstTitle, firstYear, secondTitle, secondYear,
     summary, challenges, keyPositives, doDifferently}) {
 
-    let firstRandomName, secondRandomName
+    let firstRandomName; let secondRandomName;
 
     let logbookRecord = await Logbook.updateOne({ id : this.req.params.id })
-    .set({ 
+    .set({
       action, firstTitle, firstYear, secondTitle, secondYear, summary,
       challenges, keyPositives, doDifferently
-    })
+    });
 
     this.req.file('firstDocument').upload({
       maxBytes: 5000000, // 5MB
       dirname: require('path').resolve(sails.config.appPath, '.tmp/public'),
       saveAs: function(file, cb) {
-        firstRandomName = `${randomStrings()}_${file.filename}`
+        firstRandomName = `${randomStrings()}_${file.filename}`;
         cb(null, firstRandomName);
       }
     }, async function whenDone(err, uploadFiles) {
-        if (err) {
-          return this.res.status(500).json({message: 'No file was uploaded'})
-        }
-        
-        docUrl = require('util').format(`${UPLOAD_URL}/${firstRandomName}`)
-
-        if (uploadFiles.length > 0) {
-          await Logbook.updateOne({ id : logbookRecord.id })
-          .set({ firstDocument : docUrl })
-        }
+      if (err) {
+        return this.res.status(500).json({message: 'No file was uploaded'});
       }
-    )
+
+      docUrl = require('util').format(`${UPLOAD_URL}/${firstRandomName}`);
+
+      if (uploadFiles.length > 0) {
+        await Logbook.updateOne({ id : logbookRecord.id })
+          .set({ firstDocument : docUrl });
+      }
+    }
+    );
 
     this.req.file('secondDocument').upload({
       maxBytes: 5000000, //5MB
       dirname: require('path').resolve(sails.config.appPath, '.tmp/public'),
       saveAs: function(file, cb) {
-        secondRandomName = `${randomStrings()}_${file.filename}`
+        secondRandomName = `${randomStrings()}_${file.filename}`;
         cb(null, secondRandomName);
       }
     }, async function whenDone(err, uploadFiles) {
-        if (err) {
-          return this.res.status(500).json({message: 'No file was uploaded'})
-        }
-       
-        docUrl = require('util').format(`http://localhost:1337/${secondRandomName}`)
-
-        if (uploadFiles.length > 0) {
-          await Logbook.updateOne({ id : logbookRecord.id })
-          .set({ secondDocument : docUrl })
-        }
+      if (err) {
+        return this.res.status(500).json({message: 'No file was uploaded'});
       }
-    )
+
+      docUrl = require('util').format(`http://localhost:1337/${secondRandomName}`);
+
+      if (uploadFiles.length > 0) {
+        await Logbook.updateOne({ id : logbookRecord.id })
+          .set({ secondDocument : docUrl });
+      }
+    }
+    );
     // All done.
-    return "Successful";
+    return 'Successful';
 
   }
 
