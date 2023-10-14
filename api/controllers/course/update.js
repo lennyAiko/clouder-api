@@ -1,5 +1,5 @@
-require('dotenv').config()
-const UPLOAD_URL = process.env.UPLOAD_URL
+require('dotenv').config();
+const UPLOAD_URL = process.env.UPLOAD_URL;
 
 module.exports = {
 
@@ -11,7 +11,7 @@ module.exports = {
 
 
   inputs: {
-    
+
     courseTitle: {
       type: 'string',
       maxLength: 150
@@ -34,11 +34,11 @@ module.exports = {
     challenges: {
       type: 'string',
     },
-    
+
     keyPositives: {
       type: 'string',
     },
-    
+
     doDifferently: {
       type: 'string',
     }
@@ -53,36 +53,36 @@ module.exports = {
 
   fn: async function ({courseTitle, institution, year, certificateNo, challenges, keyPositives, doDifferently}) {
 
-    let documentRandomName
+    let documentRandomName;
 
     this.req.file('document').upload({
       maxBytes: 5000000, // 5MB
       dirname: require('path').resolve(sails.config.appPath, '.tmp/public'),
       saveAs: function(file, cb) {
-        documentRandomName = `${randomStrings()}_${file.filename}`
+        documentRandomName = `${randomStrings()}_${file.filename}`;
         cb(null, documentRandomName);
       }
     }, async function whenDone(err, uploadFiles) {
-        if (err) {
-          return this.res.status(500).json({message: 'No file was uploaded'})
-        }
-
-        docUrl = require('util').format(`${UPLOAD_URL}/${documentRandomName}`)
-
-        if (uploadFiles.length > 0) {
-          await Course.updateOne({ id : courseRecord.id })
-          .set({ document : docUrl })
-        }
+      if (err) {
+        return this.res.status(500).json({message: 'No file was uploaded'});
       }
-    )
+
+      docUrl = require('util').format(`${UPLOAD_URL}/${documentRandomName}`);
+
+      if (uploadFiles.length > 0) {
+        await Course.updateOne({ id : courseRecord.id })
+          .set({ document : docUrl });
+      }
+    }
+    );
 
     let courseRecord = await Course.updateOne({ id: this.req.params.id})
-    .set({courseTitle, institution, year, certificateNo, challenges, 
+    .set({courseTitle, institution, year, certificateNo, challenges,
       keyPositives, doDifferently
-    })
+    });
 
     // All done.
-    return "Successful";
+    return 'Successful';
 
   }
 

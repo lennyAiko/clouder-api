@@ -8,7 +8,7 @@ module.exports = {
 
 
   inputs: {
-    
+
     education: {
       type: 'json',
     },
@@ -32,7 +32,7 @@ module.exports = {
 
     badCombo: {
       statusCode: 400,
-      description: "This is for error from user"
+      description: 'This is for error from user'
     }
 
   },
@@ -41,9 +41,9 @@ module.exports = {
   fn: async function ({education, challenges, keyPositives, doDifferently}) {
 
     let qualificationRecord = await Qualification.updateOne({ id: this.req.params.id })
-    .set({ 
+    .set({
       education, challenges, keyPositives, doDifferently
-    })
+    });
 
     // All done.
     return qualificationRecord;

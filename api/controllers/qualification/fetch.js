@@ -19,7 +19,7 @@ module.exports = {
 
   fn: async function (inputs) {
 
-    let qualificationRecords = await Qualification.find({ owner: this.req.user.id })
+    let qualificationRecords = await Qualification.find({ owner: this.req.user.id });
 
     // All done.
     return qualificationRecords;

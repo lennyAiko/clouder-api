@@ -22,21 +22,21 @@ module.exports = async (req, res, proceed) => {
   if (token) {
     await sails.helpers.verifyToken(token, async (err, decode) => {
       if (err || !decode) {
-        await Token.destroyOne({ token })
+        await Token.destroyOne({ token });
         return res.status(401).json('Invalid token');
       }
 
-      let TokenRecord = await Token.findOne({ userId: decode.user.id })
+      let TokenRecord = await Token.findOne({ userId: decode.user.id });
       if (TokenRecord) {
 
         if (token === TokenRecord.token) {
           req.user = decode.user;
           req.issuer = decode.issuer;
-          proceed()
+          proceed();
         } else {
           return res.status(401).json('Token does not match');
         }
-        
+
       } else {
         return res.status(401).json({err: 'Not authenticated'});
       }

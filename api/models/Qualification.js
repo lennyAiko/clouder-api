@@ -8,23 +8,23 @@
 module.exports = {
 
   attributes: {
-    
+
     education: {
       type: 'json',
       required: true,
       custom: function (value) {
-        const checkValues = ["degree", "year", "institution", "certificate"]
-        let store = [], holder = []
+        const checkValues = ['degree', 'year', 'institution', 'certificate'];
+        let store = []; let holder = [];
         for (i in value) {
-          for (obj in value[i]) { store.push(obj) }
-          holder.push(store)
-          store = []
+          for (obj in value[i]) { store.push(obj); }
+          holder.push(store);
+          store = [];
         }
         for (i in holder) {
-          if (JSON.stringify(holder[i]) == JSON.stringify(checkValues)) { continue } 
-          else { return false }
+          if (JSON.stringify(holder[i]) == JSON.stringify(checkValues)) { continue; }
+          else { return false; }
         }
-        return true
+        return true;
       }
     },
 
@@ -42,7 +42,7 @@ module.exports = {
       type: 'string',
       required: true,
     },
-    
+
     // reference to user
     owner: {
       model: 'user'

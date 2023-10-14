@@ -37,33 +37,33 @@ module.exports = {
   fn: async function ({token}) {
 
     if (!token) {
-      throw 'invalidOrExpiredToken'
+      throw 'invalidOrExpiredToken';
     }
 
-    let userRecord = await User.findOne({ emailProofToken: token })
-    
+    let userRecord = await User.findOne({ emailProofToken: token });
+
     if (!userRecord || userRecord.emailProofTokenExpiresAt <= Date.now()) {
-      throw 'invalidOrExpiredToken'
+      throw 'invalidOrExpiredToken';
     }
 
     if (userRecord.emailStatus == 'unverified') {
       await User.updateOne({ id: userRecord.id })
-      .set({ 
+      .set({
         emailStatus: 'verified',
         emailProofToken: '',
         emailProofTokenExpiresAt: 0
-      })
-      
-      return '/verified'
+      });
+
+      return '/verified';
     } else if (userRecord.emailStatus == 'change-requested') {
       if (!userRecord.emailChangeCandidate) {
         throw new Error(
           'Could not update user'
-        )
+        );
       }
 
       if ((await User.count({ email: userRecord.emailChangeCandidate })) > 0) {
-        throw 'emailAlreadyInUse'
+        throw 'emailAlreadyInUse';
       }
 
       await User.updateOne({ id: userRecord.id })
@@ -71,12 +71,12 @@ module.exports = {
         emailStatus: 'confirmed',
         emailProofToken: '',
         emailProofTokenExpiresAt: 0
-      })
-      return '/'
+      });
+      return '/';
     } else {
       throw new Error(
         'Consistency violation'
-      )
+      );
     }
 
   }

@@ -32,7 +32,7 @@ module.exports = {
 
   fn: async function ({email, password}, exits) {
 
-    email = email.toLowerCase()
+    email = email.toLowerCase();
 
     let userRecord = await User.findOne({ email });
     if (!userRecord) {
@@ -55,24 +55,24 @@ module.exports = {
         fullName: userRecord.fullName,
         email: userRecord.email,
         location: userRecord.location ? userRecord.location : null
-      }, 
+      },
       issuer: tokenIssuer
     });
 
     await sails.getDatastore()
     .leaseConnection(async (db) => {
       let TokenRecord = await Token.findOne({ userId: userRecord.id })
-      .usingConnection(db)
-    
+      .usingConnection(db);
+
       if (TokenRecord) {
         await Token.updateOne({ userId: userRecord.id })
         .set({ token: token.access })
-        .usingConnection(db)
+        .usingConnection(db);
       } else {
         await Token.create({ userId: userRecord.id, token: token.access })
-        .usingConnection(db)
+        .usingConnection(db);
       }
-    })
+    });
 
     return exits.success({
       access: token.access,

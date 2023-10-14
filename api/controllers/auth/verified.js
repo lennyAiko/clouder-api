@@ -20,7 +20,7 @@ module.exports = {
   fn: async function (inputs) {
 
     // All done.
-    return "Verified!";
+    return 'Verified!';
 
   }
 

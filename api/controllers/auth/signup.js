@@ -34,18 +34,18 @@ module.exports = {
   exits: {
 
     success: {
-      statusCode: 200,
-      description: 'This is for a successful transaction'
+      description: 'This is for a successful transaction',
+      responseType: 'ok'
     },
 
     badCombo: {
-      statusCode: 400,
-      description: 'This is for a bad entry from the user'
+      description: 'This is for a bad entry from the user',
+      responseType: 'badRequest'
     },
 
     invalidData: {
-      statusCode: 409,
-      description: 'This is for existing data from the user'
+      description: 'This is for existing data from the user',
+      responseType: 'conflicted'
     }
 
   },
@@ -89,9 +89,7 @@ module.exports = {
       }
     })
 
-    return exits.success({
-      message: "User can check mail"
-    });
+    return exits.success("User can check mail");
   }
 
 };
