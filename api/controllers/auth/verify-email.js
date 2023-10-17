@@ -20,7 +20,7 @@ module.exports = {
 
     success: {
       description: 'The token is accepted and the user is verified',
-      responseType: 'ok'
+      responseType: 'redirect'
     },
 
     invalidOrExpiredToken: {
@@ -56,7 +56,7 @@ module.exports = {
         emailProofTokenExpiresAt: 0
       });
 
-      return exits.success('User verified');
+      return exits.success('https://clouder-gamma.vercel.app/auth/verified');
     } else if (userRecord.emailStatus == 'change-requested') {
       if (!userRecord.emailChangeCandidate) {
         throw new Error(
@@ -74,7 +74,7 @@ module.exports = {
         emailProofToken: '',
         emailProofTokenExpiresAt: 0
       });
-      return exits.success('User confirmed');
+      return exits.success('https://clouder-gamma.vercel.app/auth/verified');
     } else {
       throw new Error(
         'Consistency violation'
