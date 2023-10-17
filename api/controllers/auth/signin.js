@@ -41,6 +41,12 @@ module.exports = {
       });
     }
 
+    if (userRecord.emailStatus == 'unverified') {
+      return exits.badCombo({
+        error: 'User not verified'
+      })
+    }
+
     await sails.helpers.passwords
     .checkPassword(password, userRecord.password)
     .intercept('incorrect', () => {

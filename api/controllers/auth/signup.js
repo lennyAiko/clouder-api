@@ -57,6 +57,12 @@ module.exports = {
   
     const hashedPassword = await sails.helpers.passwords.hashPassword(password)
 
+    let userRecord = await User.findOne({ email })
+    
+    if (userRecord) {
+      throw {invalidData: 'Email already exists'}
+    }
+
     const unverifiedUser = await User.create({ 
       fullName, 
       phone, 
@@ -66,18 +72,7 @@ module.exports = {
       tosAcceptedByIp: this.req.ip,
       emailProofToken: sails.helpers.strings.random('url-friendly'),
       emailProofTokenExpiresAt: Date.now() + sails.config.custom.emailProofTokenTTL
-    })
-      .intercept('E_UNIQUE', 'invalidData')
-      .intercept({ name: 'usageError' }, () => {
-        throw {
-          badCombo: {
-            problems: [
-              "Something went wrong trying to sign you up. Please try again."
-            ]
-          }
-        }
-      })
-      .fetch();
+    }).fetch();
 
     await sails.helpers.mail.send.with({
       subject: 'Verify your email',
