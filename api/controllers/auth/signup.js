@@ -60,6 +60,9 @@ module.exports = {
     let userRecord = await User.findOne({ email })
     
     if (userRecord) {
+      if (userRecord.emailStatus == 'unverified') {
+        throw {invalidData: 'Email already exists but not verified'}
+      }
       throw {invalidData: 'Email already exists'}
     }
 
@@ -84,7 +87,13 @@ module.exports = {
       }
     })
 
-    return exits.success("User can check mail");
+    return exits.success(
+      {
+        type: 'success',
+        message: 'Kindly check email to verify your email address',
+        title: 'Registration Successful'
+      }
+    );
   }
 
 };
