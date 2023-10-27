@@ -56,7 +56,7 @@ module.exports = {
         emailProofTokenExpiresAt: 0
       });
 
-      return exits.success('https://clouder-gamma.vercel.app/auth/verified');
+      return exits.success('https://clouder-nu.vercel.app/auth/verified');
     } else if (userRecord.emailStatus == 'change-requested') {
       if (!userRecord.emailChangeCandidate) {
         throw new Error(
