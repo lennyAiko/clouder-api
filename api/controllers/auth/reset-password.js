@@ -35,9 +35,7 @@ module.exports = {
   },
 
 
-  fn: async function ({token, email, password, confirmPassword}, exits) {
-
-    email = email.toLowerCase();
+  fn: async function ({token, password}, exits) {
 
     if (!token) { 
       throw {invalid: 'No token provided'}
