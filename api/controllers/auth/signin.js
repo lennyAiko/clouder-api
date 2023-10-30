@@ -43,7 +43,7 @@ module.exports = {
 
     if (userRecord.emailStatus == 'unverified') {
       return exits.badCombo({
-        error: 'User not verified'
+        error: 'User or Email not verified'
       })
     }
 
