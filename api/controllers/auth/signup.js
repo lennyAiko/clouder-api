@@ -9,21 +9,21 @@ module.exports = {
 
   inputs: {
 
-    fullName: { 
-      type: 'string', 
+    fullName: {
+      type: 'string',
       required: true,
       maxLength: 120
     },
     location: { type: 'string' },
     phone: { type: 'string' },
-    email: { 
-      type: 'string', 
-      required: true, 
-      isEmail: true 
+    email: {
+      type: 'string',
+      required: true,
+      isEmail: true
     },
-    password: { 
-      type: 'string', 
-      required: true, 
+    password: {
+      type: 'string',
+      required: true,
       protect: true,
       minLength: 8
     }
@@ -52,25 +52,25 @@ module.exports = {
 
 
   fn: async function ({fullName, phone, location, email: userEmail, password}, exits) {
-    
-    const email = userEmail.toLowerCase();
-  
-    const hashedPassword = await sails.helpers.passwords.hashPassword(password)
 
-    let userRecord = await User.findOne({ email })
-    
+    const email = userEmail.toLowerCase();
+
+    const hashedPassword = await sails.helpers.passwords.hashPassword(password);
+
+    let userRecord = await User.findOne({ email });
+
     if (userRecord) {
       if (userRecord.emailStatus == 'unverified') {
-        throw {invalidData: 'Email already exists but not verified'}
+        throw {invalidData: 'Email already exists but not verified'};
       }
-      throw {invalidData: 'Email already exists'}
+      throw {invalidData: 'Email already exists'};
     }
 
-    const unverifiedUser = await User.create({ 
-      fullName, 
-      phone, 
-      location, 
-      email, 
+    const unverifiedUser = await User.create({
+      fullName,
+      phone,
+      location,
+      email,
       password: hashedPassword,
       tosAcceptedByIp: this.req.ip,
       emailProofToken: sails.helpers.strings.random('url-friendly'),
@@ -85,7 +85,7 @@ module.exports = {
         token: unverifiedUser.emailProofToken,
         fullName: unverifiedUser.fullName
       }
-    })
+    });
 
     return exits.success(
       {

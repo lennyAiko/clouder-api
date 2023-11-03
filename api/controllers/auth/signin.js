@@ -44,7 +44,7 @@ module.exports = {
     if (userRecord.emailStatus == 'unverified') {
       return exits.badCombo({
         error: 'User or Email not verified'
-      })
+      });
     }
 
     await sails.helpers.passwords

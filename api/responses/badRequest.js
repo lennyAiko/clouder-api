@@ -29,7 +29,6 @@
 module.exports = function badRequest(optionalData) {
 
   // Get access to `req` and `res`
-  var req = this.req;
   var res = this.res;
 
   // Define the status code to send in the response.

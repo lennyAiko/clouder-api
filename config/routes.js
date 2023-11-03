@@ -20,6 +20,7 @@ module.exports.routes = {
 
   'GET /user/signout': 'user/signout',
   'GET /user/profile': 'user/profile',
+  'PATCH /user/update': 'user/update',
 
   'POST /qualifications': 'qualification/create',
   'GET /qualifications': 'qualification/fetch',

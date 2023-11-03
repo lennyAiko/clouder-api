@@ -35,22 +35,22 @@ module.exports = {
 
   fn: async function ({email: userEmail}, exits) {
 
-    const email = userEmail.toLowerCase()
+    const email = userEmail.toLowerCase();
 
-    let userRecords = await User.findOne({ email })
+    let userRecords = await User.findOne({ email });
 
     if (!userRecords) {
-      return exits.invalidEmail('Email not found')
+      return exits.invalidEmail('Email not found');
     }
 
     if (userRecords.emailStatus == 'verified') {
-      return exits.invalidEmail('The user is verified')
-    } 
+      return exits.invalidEmail('The user is verified');
+    }
     else {
       await User.updateOne({ email })
       .set({
-      emailProofTokenExpiresAt: Date.now() + sails.config.custom.emailProofTokenTTL
-      })
+        emailProofTokenExpiresAt: Date.now() + sails.config.custom.emailProofTokenTTL
+      });
       await sails.helpers.mail.send.with({
         subject: 'Verify your email',
         template: 'email-verify-account',
@@ -59,9 +59,9 @@ module.exports = {
           token: userRecords.emailProofToken,
           fullName: userRecords.fullName
         }
-      })
+      });
 
-      return exits.success("Email has been sent again")
+      return exits.success('Email has been sent again');
     }
 
   }
