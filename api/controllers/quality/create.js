@@ -54,13 +54,13 @@ module.exports = {
 
   fn: async function ({title, year, details, challenges, keyPositives, doDifferently}, exits) {
 
-    let qiRecord = await Quality.create({
+    let qualityRecord = await Quality.create({
       owner: this.req.user.id,
       title, year, details, keyPositives, doDifferently, challenges
     }).fetch()
 
     // All done.
-    return exits.success(qiRecord);
+    return exits.success(qualityRecord);
 
   }
 

@@ -15,11 +15,11 @@ module.exports = {
   exits: {
 
     success: {
-      statusCode: 200
+      responseType: 'accepted'
     },
 
     invalid: {
-      statusCode: 400
+      responseType: 'badRequest'
     }
 
   },
@@ -27,8 +27,8 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    if (this.req.session.token) {
-      this.req.session.token = '';
+    if (this.req.user.id) {
+      await Token.destroyOne({ userId: this.req.user.id })
       return exits.success({message: 'User has logged out'});
     }
 
