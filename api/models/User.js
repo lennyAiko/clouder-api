@@ -76,7 +76,7 @@ module.exports = {
     },
 
     // references
-    qualifications: {
+    qualification: {
       collection: 'qualification',
       via: 'owner'
     },
@@ -88,6 +88,11 @@ module.exports = {
 
     course: {
       collection: 'course',
+      via: 'owner'
+    },
+
+    qi: {
+      collection: 'qi',
       via: 'owner'
     }
 
