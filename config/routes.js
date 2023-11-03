@@ -40,4 +40,5 @@ module.exports.routes = {
   'PATCH /courses/:id': 'course/update',
   'DELETE /courses/:id': 'course/delete',
 
+  'POST /quality': 'quality/create',
 };

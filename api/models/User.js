@@ -92,7 +92,7 @@ module.exports = {
     },
 
     qi: {
-      collection: 'qi',
+      collection: 'quality',
       via: 'owner'
     }
 
