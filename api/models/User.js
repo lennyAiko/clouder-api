@@ -76,7 +76,7 @@ module.exports = {
     },
 
     // references
-    qualifications: {
+    qualification: {
       collection: 'qualification',
       via: 'owner'
     },
@@ -89,12 +89,17 @@ module.exports = {
     course: {
       collection: 'course',
       via: 'owner'
+    },
+
+    qi: {
+      collection: 'quality',
+      via: 'owner'
     }
 
   },
 
   customToJSON: function () {
-    return _.omit(this, ['password', 'createdAt', 'updatedAt', 'emailChangeCandidate', 'passwordResetToken', 'passwordResetTokenExpiresAt', 'emailProofToken', 'emailProofTokenExpiresAt']);
+    return _.omit(this, ['password', 'createdAt', 'updatedAt', 'emailChangeCandidate', 'passwordResetToken', 'passwordResetTokenExpiresAt', 'emailProofToken', 'emailProofTokenExpiresAt', 'tosAcceptedByIp']);
   },
 
 };

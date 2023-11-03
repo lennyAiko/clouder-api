@@ -41,13 +41,13 @@ module.exports = {
       return exits.notFound('User not found');
     }
 
-    const resetToken = await sails.helpers.strings.random('url-friendly')
+    const resetToken = await sails.helpers.strings.random('url-friendly');
 
     await User.updateOne({ id: userRecord.id })
     .set({
       passwordResetToken: resetToken,
       passwordResetTokenExpiresAt: Date.now() + sails.config.custom.passwordResetTokenTTL
-    })
+    });
 
     await sails.helpers.mail.send.with({
       to: userRecord.email,
@@ -57,7 +57,7 @@ module.exports = {
         fullName: userRecord.fullName,
         token: resetToken
       }
-    })
+    });
 
     return exits.success('Check email');
 

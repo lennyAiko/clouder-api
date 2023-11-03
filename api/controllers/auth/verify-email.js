@@ -65,7 +65,7 @@ module.exports = {
       }
 
       if ((await User.count({ email: userRecord.emailChangeCandidate })) > 0) {
-        throw {emailAlreadyInUse: "Email already exists"};
+        throw {emailAlreadyInUse: 'Email already exists'};
       }
 
       await User.updateOne({ id: userRecord.id })

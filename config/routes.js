@@ -20,6 +20,7 @@ module.exports.routes = {
 
   'GET /user/signout': 'user/signout',
   'GET /user/profile': 'user/profile',
+  'PATCH /user/update': 'user/update',
 
   'POST /qualifications': 'qualification/create',
   'GET /qualifications': 'qualification/fetch',
@@ -39,4 +40,5 @@ module.exports.routes = {
   'PATCH /courses/:id': 'course/update',
   'DELETE /courses/:id': 'course/delete',
 
+  'POST /quality': 'quality/create',
 };

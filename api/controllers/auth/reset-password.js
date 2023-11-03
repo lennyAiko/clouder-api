@@ -37,14 +37,14 @@ module.exports = {
 
   fn: async function ({token, password}, exits) {
 
-    if (!token) { 
-      throw {invalid: 'No token provided'}
+    if (!token) {
+      throw {invalid: 'No token provided'};
     }
 
-    const user = await User.findOne({ passwordResetToken: token })
+    const user = await User.findOne({ passwordResetToken: token });
 
     if (!user || user.passwordResetTokenExpiresAt <= Date.now()) {
-      throw {invalid: 'Token expired'}
+      throw {invalid: 'Token expired'};
     }
 
     const hashedPassword = await sails.helpers.passwords.hashPassword(password);
@@ -54,7 +54,7 @@ module.exports = {
       password: hashedPassword,
       passwordResetToken: '',
       passwordResetTokenExpiresAt: 0
-    })
+    });
 
     return exits.success('Password updated successfully');
 
