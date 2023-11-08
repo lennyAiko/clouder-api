@@ -16,6 +16,10 @@ module.exports = {
       columnName: 'full_name'
     },
 
+    img: {
+      type: 'string'
+    },
+
     email: {
       type: 'string',
       required: true,
