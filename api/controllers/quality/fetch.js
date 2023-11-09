@@ -19,7 +19,7 @@ module.exports = {
 
   fn: async function (inputs) {
 
-    let qualityRecord = await Quality.findOne({ owner: this.req.user.id })
+    let qualityRecord = await Quality.find({ owner: this.req.user.id })
 
     // All done.
     return qualityRecord;
