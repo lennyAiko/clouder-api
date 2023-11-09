@@ -40,5 +40,10 @@ module.exports.routes = {
   'PATCH /courses/:id': 'course/update',
   'DELETE /courses/:id': 'course/delete',
 
-  'POST /quality': 'quality/create',
+  'POST /qualities': 'quality/create',
+  'GET /qualities': 'quality/fetch',
+  'GET /qualities/:id': 'quality/read',
+  'PATCH /qualities/:id': 'quality/update',
+  'DELETE /qualities/:id': 'quality/delete',
+
 };
