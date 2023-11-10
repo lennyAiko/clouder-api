@@ -60,6 +60,7 @@ module.exports = {
         id: userRecord.id,
         fullName: userRecord.fullName,
         email: userRecord.email,
+        phone: userRecord.phone,
         location: userRecord.location ? userRecord.location : null
       },
       issuer: tokenIssuer

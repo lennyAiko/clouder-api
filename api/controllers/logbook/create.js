@@ -46,7 +46,7 @@ module.exports = {
 
     this.req.file('firstDocument').upload({
       maxBytes: 5000000, // 5MB
-      dirname: require('path').resolve(sails.config.appPath, '.tmp/public'),
+      dirname: require('path').resolve(sails.config.appPath, '.tmp/public/logbook'),
       saveAs: function(file, cb) {
         firstRandomName = `${randomStrings()}_${file.filename}`;
         cb(null, firstRandomName);
@@ -67,7 +67,7 @@ module.exports = {
 
     this.req.file('secondDocument').upload({
       maxBytes: 5000000, //5MB
-      dirname: require('path').resolve(sails.config.appPath, '.tmp/public'),
+      dirname: require('path').resolve(sails.config.appPath, '.tmp/public/logbook'),
       saveAs: function(file, cb) {
         secondRandomName = `${randomStrings()}_${file.filename}`;
         cb(null, secondRandomName);

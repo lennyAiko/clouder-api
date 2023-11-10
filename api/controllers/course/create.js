@@ -72,7 +72,7 @@ module.exports = {
 
     this.req.file('document').upload({
       maxBytes: 5000000, // 5MB
-      dirname: require('path').resolve(sails.config.appPath, '.tmp/public'),
+      dirname: require('path').resolve(sails.config.appPath, '.tmp/public/courses'),
       saveAs: function(file, cb) {
         documentRandomName = `${randomStrings()}_${file.filename}`;
         cb(null, documentRandomName);
