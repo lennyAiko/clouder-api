@@ -34,7 +34,8 @@ module.exports.security = {
       'http://localhost:3000',
       'http://localhost:3001',
       'http://localhost:3002',
-      'https://clouder-dev.netlify.app'
+      'https://clouder-dev.netlify.app',
+      'https://clouder-ten.vercel.app'
     ],
     allowCredentials: true,
     allowRequestHeaders: 'Authorization, Content-Type, Origin, X-Requested-With, Accept',
