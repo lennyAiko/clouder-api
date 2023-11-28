@@ -1,68 +1,62 @@
 module.exports = {
+  friendlyName: "Create",
 
-
-  friendlyName: 'Create',
-
-
-  description: 'Create quality-improvement.',
-
+  description: "Create quality-improvement.",
 
   inputs: {
-
     title: {
-      type: 'json',
-      required: true
+      type: "json",
+      required: true,
     },
-    
+
     year: {
-      type: 'json',
-      required: true
+      type: "json",
+      required: true,
     },
 
     details: {
-      type: 'json',
-      required: true
+      type: "json",
+      required: true,
     },
 
     challenges: {
-      type: 'string',
+      type: "string",
       required: true,
     },
 
     keyPositives: {
-      type: 'string',
+      type: "string",
       required: true,
     },
 
     doDifferently: {
-      type: 'string',
-      required: true
-    }
-
+      type: "string",
+      required: true,
+    },
   },
-
 
   exits: {
-
     success: {
-      description: 'User submission is correct',
-      responseType: 'accepted'
-    }
-
+      description: "User submission is correct",
+      responseType: "accepted",
+    },
   },
 
-
-  fn: async function ({title, year, details, challenges, keyPositives, doDifferently}, exits) {
-
+  fn: async function (
+    { title, year, details, challenges, keyPositives, doDifferently },
+    exits
+  ) {
     let qualityRecord = await Quality.create({
       owner: this.req.user.id,
-      title, year, details, keyPositives, doDifferently, challenges
-    }).fetch()
+      title,
+      year,
+      details,
+      keyPositives,
+      doDifferently,
+      challenges,
+    }).fetch();
 
     // All done.
     return exits.success(qualityRecord);
-
-  }
-
-
+  },
 };
