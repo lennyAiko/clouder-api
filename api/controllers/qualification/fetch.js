@@ -1,30 +1,21 @@
 module.exports = {
+  friendlyName: "Fetch",
 
+  description: "Fetch qualification.",
 
-  friendlyName: 'Fetch',
+  inputs: {},
 
-
-  description: 'Fetch qualification.',
-
-
-  inputs: {
-
-  },
-
-
-  exits: {
-
-  },
-
+  exits: {},
 
   fn: async function (inputs) {
-
-    let qualificationRecords = await Qualification.find({ owner: this.req.user.id });
+    let qualificationRecords = await Qualification.find({
+      owner: this.req.user.id,
+    });
 
     // All done.
-    return qualificationRecords;
-
-  }
-
-
+    return {
+      message: "Successfully fetched a qualification",
+      data: qualificationRecords,
+    };
+  },
 };

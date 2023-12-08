@@ -1,53 +1,46 @@
 module.exports = {
+  friendlyName: "Create",
 
-
-  friendlyName: 'Create',
-
-
-  description: 'Create qualification.',
-
+  description: "Create qualification.",
 
   inputs: {
-
     education: {
-      type: 'json',
-      required: true
+      type: "json",
+      required: true,
     },
 
     challenges: {
-      type: 'string',
+      type: "string",
       required: true,
     },
 
     keyPositives: {
-      type: 'string',
+      type: "string",
       required: true,
     },
 
     doDifferently: {
-      type: 'string',
-      required: true
-    }
-
+      type: "string",
+      required: true,
+    },
   },
 
+  exits: {},
 
-  exits: {
-
-  },
-
-
-  fn: async function ({education, challenges, keyPositives, doDifferently}) {
-
+  fn: async function ({ education, challenges, keyPositives, doDifferently }) {
     let qualificationRecord = await Qualification.create({
       owner: this.req.user.id,
-      education, challenges, keyPositives, doDifferently
+      education,
+      challenges,
+      keyPositives,
+      doDifferently,
     }).fetch();
 
     // All done.
-    return qualificationRecord;
-
-  }
-
-
+    return {
+      status: 200,
+      message: "Successfully created a qualification",
+      data: qualificationRecord,
+    };
+  },
 };
