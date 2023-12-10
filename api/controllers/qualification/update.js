@@ -1,54 +1,47 @@
 module.exports = {
+  friendlyName: "Update",
 
-
-  friendlyName: 'Update',
-
-
-  description: 'Update qualification.',
-
+  description: "Update qualification.",
 
   inputs: {
-
     education: {
-      type: 'json',
+      type: "json",
     },
 
     challenges: {
-      type: 'string',
+      type: "string",
     },
 
     keyPositives: {
-      type: 'string',
+      type: "string",
     },
 
     doDifferently: {
-      type: 'string',
-    }
-
+      type: "string",
+    },
   },
-
 
   exits: {
-
     badCombo: {
       statusCode: 400,
-      description: 'This is for error from user'
-    }
-
+      description: "This is for error from user",
+    },
   },
 
-
-  fn: async function ({education, challenges, keyPositives, doDifferently}) {
-
-    let qualificationRecord = await Qualification.updateOne({ id: this.req.params.id })
-    .set({
-      education, challenges, keyPositives, doDifferently
+  fn: async function ({ education, challenges, keyPositives, doDifferently }) {
+    let qualificationRecord = await Qualification.updateOne({
+      id: this.req.params.id,
+    }).set({
+      education,
+      challenges,
+      keyPositives,
+      doDifferently,
     });
 
     // All done.
-    return qualificationRecord;
-
-  }
-
-
+    return {
+      message: "Successfully updated a qualification",
+      data: qualificationRecord,
+    };
+  },
 };
