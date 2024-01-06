@@ -13,7 +13,7 @@ module.exports = {
     });
 
     if (!qualificationRecord) {
-      return this.res.status(400).json("Could not find qualification");
+      return this.res.status(404).json("Could not find qualification");
     }
 
     // All done.

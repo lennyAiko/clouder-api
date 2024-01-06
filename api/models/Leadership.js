@@ -1,5 +1,5 @@
 /**
- * Quality.js
+ * Leadership.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -12,18 +12,18 @@ module.exports = {
       required: true,
       maxLength: 150,
     },
-
-    year: {
+    startYear: {
       type: "string",
       required: true,
-      maxLength: 12,
+      maxLength: 11,
+      columnName: "start_year",
     },
-
-    details: {
+    endYear: {
       type: "string",
       required: true,
+      maxLength: 11,
+      columnName: "end_year",
     },
-
     challenges: {
       type: "string",
       required: true,

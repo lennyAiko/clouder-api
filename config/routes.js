@@ -45,4 +45,10 @@ module.exports.routes = {
   "GET /qualities/:id": "quality/read",
   "PATCH /qualities/:id": "quality/update",
   "DELETE /qualities/:id": "quality/delete",
+
+  "POST /leaderships": "leadership/create",
+  "PATCH /leaderships/:id": "leadership/update",
+  "GET /leaderships": "leadership/fetch",
+  "DELETE /leaderships/:id": "leadership/delete",
+  "GET /leaderships/:id": "leadership/read",
 };

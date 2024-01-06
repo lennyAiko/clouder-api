@@ -1,24 +1,21 @@
 module.exports = {
   friendlyName: "Create",
 
-  description: "Create quality-improvement.",
+  description: "Create leadership.",
 
   inputs: {
     title: {
       type: "string",
       required: true,
     },
-
-    year: {
+    startYear: {
       type: "string",
       required: true,
     },
-
-    details: {
+    endYear: {
       type: "string",
       required: true,
     },
-
     challenges: {
       type: "string",
       required: true,
@@ -35,28 +32,31 @@ module.exports = {
     },
   },
 
-  exits: {
-    success: {
-      description: "User submission is correct",
-      responseType: "accepted",
-    },
-  },
+  exits: {},
 
-  fn: async function (
-    { title, year, details, challenges, keyPositives, doDifferently },
-    exits
-  ) {
-    let qualityRecord = await Quality.create({
+  fn: async function ({
+    title,
+    startYear,
+    endYear,
+    challenges,
+    keyPositives,
+    doDifferently,
+  }) {
+    // All done.
+    const leadershipRecord = await Leadership.create({
       owner: this.req.user.id,
       title,
-      year,
-      details,
+      startYear,
+      endYear,
+      challenges,
       keyPositives,
       doDifferently,
-      challenges,
     }).fetch();
 
-    // All done.
-    return exits.success(qualityRecord);
+    return {
+      status: 200,
+      message: "Successfully created a leadership",
+      data: leadershipRecord,
+    };
   },
 };
