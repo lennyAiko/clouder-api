@@ -5,17 +5,17 @@ module.exports = {
 
   inputs: {
     title: {
-      type: "json",
+      type: "string",
       required: true,
     },
 
     year: {
-      type: "json",
+      type: "string",
       required: true,
     },
 
     details: {
-      type: "json",
+      type: "string",
       required: true,
     },
 

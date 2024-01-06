@@ -6,47 +6,42 @@
  */
 
 module.exports = {
-
   attributes: {
-
     title: {
-      type: 'string',
+      type: "string",
       required: true,
-      maxLength: 150
+      maxLength: 150,
     },
 
     year: {
-      type: 'string',
+      type: "string",
       required: true,
-      maxLength: 4
+      maxLength: 12,
     },
 
     details: {
-      type: 'string',
-      required: true
+      type: "string",
+      required: true,
     },
 
     challenges: {
-      type: 'string',
-      required: true
+      type: "string",
+      required: true,
     },
 
     keyPositives: {
-      type: 'string',
-      required: true
+      type: "string",
+      required: true,
     },
 
     doDifferently: {
-      type: 'string',
+      type: "string",
       required: true,
     },
 
     // reference to user
     owner: {
-      model: 'user'
-    }
-
+      model: "user",
+    },
   },
-
 };
-

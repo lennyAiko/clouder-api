@@ -1,14 +1,14 @@
 module.exports = {
   friendlyName: "Delete",
 
-  description: "Delete qualification.",
+  description: "Delete leadership.",
 
   inputs: {},
 
   exits: {},
 
   fn: async function (inputs) {
-    await Qualification.destroyOne({ id: this.req.params.id });
+    await Leadership.destroyOne({ id: this.req.params.id });
 
     // All done.
     return "Successful";

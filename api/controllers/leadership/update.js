@@ -1,7 +1,7 @@
 module.exports = {
-  friendlyName: "Create",
+  friendlyName: "Update",
 
-  description: "Create leadership.",
+  description: "Update leadership.",
 
   inputs: {
     title: {
@@ -32,7 +32,12 @@ module.exports = {
     },
   },
 
-  exits: {},
+  exits: {
+    badCombo: {
+      statusCode: 400,
+      description: "This is for error from user",
+    },
+  },
 
   fn: async function ({
     title,
@@ -42,20 +47,19 @@ module.exports = {
     keyPositives,
     doDifferently,
   }) {
-    // All done.
-    const leadershipRecord = await Leadership.create({
-      owner: this.req.user.id,
+    let leadershipRecord = await Leadership.updateOne({
+      id: this.req.params.id,
+    }).set({
       title,
       startYear,
       endYear,
       challenges,
       keyPositives,
       doDifferently,
-    }).fetch();
-
+    });
+    // All done.
     return {
-      status: 200,
-      message: "Successfully created a leadership",
+      message: "Successfully updated a qualification",
       data: leadershipRecord,
     };
   },
