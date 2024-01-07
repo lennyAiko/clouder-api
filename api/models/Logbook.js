@@ -6,69 +6,70 @@
  */
 
 module.exports = {
-
   attributes: {
-
     action: {
-      type: 'string',
-      isIn: ['Observe', 'Assist', 'Perform'],
-      required: true
+      type: "string",
+      isIn: ["Observe", "Assist", "Perform"],
+      required: true,
+    },
+
+    logBookType: {
+      type: "string",
+      isIn: ["logbook", "surgical"],
+      required: true,
     },
 
     firstTitle: {
-      type: 'string',
-      required: true
+      type: "string",
+      required: true,
     },
 
     firstYear: {
-      type: 'string',
-      required: true
+      type: "string",
+      required: true,
     },
 
     firstDocument: {
-      type: 'string',
+      type: "string",
     },
 
     secondTitle: {
-      type: 'string',
-      required: true
+      type: "string",
+      required: true,
     },
 
     secondYear: {
-      type: 'string',
-      required: true
+      type: "string",
+      required: true,
     },
 
     secondDocument: {
-      type: 'string',
+      type: "string",
     },
 
     summary: {
-      type: 'string',
-      required: true
+      type: "string",
+      required: true,
     },
 
     challenges: {
-      type: 'string',
-      required: true
+      type: "string",
+      required: true,
     },
 
     keyPositives: {
-      type: 'string',
-      required: true
+      type: "string",
+      required: true,
     },
 
     doDifferently: {
-      type: 'string',
+      type: "string",
       required: true,
     },
 
     // reference to user
     owner: {
-      model: 'user'
-    }
-
+      model: "user",
+    },
   },
-
 };
-
