@@ -6,105 +6,117 @@
  */
 
 module.exports = {
-
   attributes: {
-
     fullName: {
-      type: 'string',
+      type: "string",
       required: true,
       maxLength: 120,
-      columnName: 'full_name'
+      columnName: "full_name",
     },
 
     img: {
-      type: 'string'
+      type: "string",
     },
 
     email: {
-      type: 'string',
+      type: "string",
       required: true,
       isEmail: true,
       unique: true,
-      maxLength: 200
+      maxLength: 200,
     },
 
     emailStatus: {
-      type: 'string',
-      isIn: ['unverified', 'verified', 'change-requested'],
-      defaultsTo: 'unverified',
-      columnName: 'email_status'
+      type: "string",
+      isIn: ["unverified", "verified", "change-requested"],
+      defaultsTo: "unverified",
+      columnName: "email_status",
     },
 
     emailChangeCandidate: {
-      type: 'string',
+      type: "string",
       isEmail: true,
-      description: 'unverified email address that this user wants to change to',
-      columnName: 'email_change_candidate'
+      description: "unverified email address that this user wants to change to",
+      columnName: "email_change_candidate",
     },
 
     phone: {
-      type: 'string',
-      maxLength: 11
+      type: "string",
+      maxLength: 11,
     },
 
     location: {
-      type: 'string',
-      maxLength: 60
+      type: "string",
+      maxLength: 60,
     },
 
     password: {
-      type: 'string',
+      type: "string",
       required: true,
       protect: true,
-      minLength: 8
+      minLength: 8,
     },
 
     passwordResetToken: {
-      type: 'string',
-      columnName: 'password_reset_token'
+      type: "string",
+      columnName: "password_reset_token",
     },
 
     passwordResetTokenExpiresAt: {
-      type: 'number',
-      columnName: 'password_reset_token_expires_at'
+      type: "number",
+      columnName: "password_reset_token_expires_at",
     },
 
     emailProofToken: {
-      type: 'string',
-      columnName: 'email_proof_token'
+      type: "string",
+      columnName: "email_proof_token",
     },
 
     emailProofTokenExpiresAt: {
-      type: 'number',
-      columnName: 'email_proof_token_expires_at'
+      type: "number",
+      columnName: "email_proof_token_expires_at",
+    },
+
+    role: {
+      type: "string",
+      isIn: ["supervisor", "client"],
+      required: true,
+      protect: true,
     },
 
     // references
     qualification: {
-      collection: 'qualification',
-      via: 'owner'
+      collection: "qualification",
+      via: "owner",
     },
 
     logbook: {
-      collection: 'logbook',
-      via: 'owner'
+      collection: "logbook",
+      via: "owner",
     },
 
     course: {
-      collection: 'course',
-      via: 'owner'
+      collection: "course",
+      via: "owner",
     },
 
     qi: {
-      collection: 'quality',
-      via: 'owner'
-    }
-
+      collection: "quality",
+      via: "owner",
+    },
   },
 
   customToJSON: function () {
-    return _.omit(this, ['password', 'createdAt', 'updatedAt', 'emailChangeCandidate', 'passwordResetToken', 'passwordResetTokenExpiresAt', 'emailProofToken', 'emailProofTokenExpiresAt', 'tosAcceptedByIp']);
+    return _.omit(this, [
+      "password",
+      "createdAt",
+      "updatedAt",
+      "emailChangeCandidate",
+      "passwordResetToken",
+      "passwordResetTokenExpiresAt",
+      "emailProofToken",
+      "emailProofTokenExpiresAt",
+      "tosAcceptedByIp",
+    ]);
   },
-
 };
-
