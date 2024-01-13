@@ -17,9 +17,11 @@
     "sails-hook-orm": "^4.0.0",
     "sails-hook-rate-limit": "^0.0.2",
     "sails-hook-sockets": "^2.0.0",
+    "sails-hook-swagger-generator": "^3.3.0",
     "sails-mongo": "^2.0.1",
     "skipper": "^0.9.4",
     "skipper-gridfs": "^1.0.2",
+    "swagger-ui-express": "^5.0.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
