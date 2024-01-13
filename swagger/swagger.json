@@ -523,7 +523,8 @@
             "required": [
               "fullName",
               "email",
-              "password"
+              "password",
+              "role"
             ]
           }
         ]
@@ -597,6 +598,13 @@
           "emailProofTokenExpiresAt": {
             "type": "number",
             "format": "double"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "supervisor",
+              "client"
+            ]
           },
           "qualification": {
             "description": "Array of **qualification**'s or array of FK's when creating / updating / not populated",
@@ -1461,42 +1469,6 @@
         }
       }
     },
-    "/swagger": {
-      "get": {
-        "summary": "/swagger",
-        "tags": [],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "The requested resource"
-          },
-          "404": {
-            "description": "Resource not found"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        }
-      }
-    },
-    "/swagger.json": {
-      "get": {
-        "summary": "/swagger.json",
-        "tags": [],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "The requested resource"
-          },
-          "404": {
-            "description": "Resource not found"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        }
-      }
-    },
     "/auth/signup": {
       "post": {
         "summary": "Create",
@@ -1525,6 +1497,14 @@
           {
             "in": "query",
             "name": "phone",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "role",
             "required": false,
             "schema": {
               "type": "string"
@@ -5703,7 +5683,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
           },
@@ -5713,7 +5693,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
           },
@@ -5772,7 +5752,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
           },
@@ -5782,7 +5762,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
           },
@@ -5958,6 +5938,18 @@
               "type": "number",
               "format": "double"
             }
+          },
+          {
+            "in": "query",
+            "name": "role",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "supervisor",
+                "client"
+              ]
+            },
+            "required": true
           },
           {
             "in": "query",
@@ -6173,6 +6165,17 @@
             "schema": {
               "type": "number",
               "format": "double"
+            }
+          },
+          {
+            "in": "query",
+            "name": "role",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "supervisor",
+                "client"
+              ]
             }
           },
           {
@@ -9307,7 +9310,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
           },
@@ -9317,7 +9320,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
           },
@@ -9420,7 +9423,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
           },
@@ -9430,7 +9433,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
           },
@@ -9878,7 +9881,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
           },
@@ -9888,7 +9891,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
           }
