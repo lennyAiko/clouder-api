@@ -9,17 +9,22 @@
  */
 
 module.exports.policies = {
-
   /***************************************************************************
-  *                                                                          *
-  * Default policy for all controllers and actions, unless overridden.       *
-  * (`true` allows public access)                                            *
-  * '': 'single policy'                                                      *
-  * '': ['multiple', 'policies]                                              *
-  *                                                                          *
-  ***************************************************************************/
+   *                                                                          *
+   * Default policy for all controllers and actions, unless overridden.       *
+   * (`true` allows public access)                                            *
+   * '': 'single policy'                                                      *
+   * '': ['multiple', 'policies]                                              *
+   *                                                                          *
+   ***************************************************************************/
 
-  'auth/*': 'pathLogger',
-  '*': ['pathLogger', 'isAuthenticated', 'checkIssuer'],
-
+  "auth/*": "pathLogger",
+  "*": ["pathLogger", "isAuthenticated", "checkIssuer", "verifyEmail"],
+  "admin/*": [
+    "pathLogger",
+    "isAuthenticated",
+    "checkIssuer",
+    "verifyAdmin",
+    "verifyEmail",
+  ],
 };
