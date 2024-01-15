@@ -60,6 +60,9 @@
       "name": "Dashboard"
     },
     {
+      "name": "Fetch users"
+    },
+    {
       "name": "Create"
     },
     {
@@ -79,6 +82,15 @@
     },
     {
       "name": "Verify email"
+    },
+    {
+      "name": "Status"
+    },
+    {
+      "name": "Role"
+    },
+    {
+      "name": "Verify"
     }
   ],
   "components": {
@@ -1502,6 +1514,26 @@
         }
       }
     },
+    "/admin/users": {
+      "get": {
+        "summary": "Fetch users",
+        "tags": [
+          "Fetch users"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "The requested resource"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
     "/auth/signup": {
       "post": {
         "summary": "Create",
@@ -1993,6 +2025,135 @@
                 "$ref": "#/components/schemas/user-without-required-constraint"
               }
             }
+          }
+        }
+      }
+    },
+    "/admin/users/{id}/status": {
+      "patch": {
+        "summary": "Status",
+        "description": "update user status with admin.",
+        "tags": [
+          "Status"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "status",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "active",
+                "inactive"
+              ]
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Route pattern variable `id`"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested resource"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/admin/users/{id}/role": {
+      "patch": {
+        "summary": "Role",
+        "description": "update user role with admin.",
+        "tags": [
+          "Role"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "role",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "supervisor",
+                "client"
+              ]
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Route pattern variable `id`"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested resource"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/admin/users/{id}/verify": {
+      "patch": {
+        "summary": "Verify",
+        "description": "update user verification with admin.",
+        "tags": [
+          "Verify"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "emailStatus",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "verified",
+                "unverified"
+              ]
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Route pattern variable `id`"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested resource"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
           }
         }
       }

@@ -55,7 +55,7 @@ module.exports = {
         location: userRecord.location ? userRecord.location : null,
         role: userRecord.role,
         status: userRecord.status,
-        email_status: userRecord.email_status,
+        emailStatus: userRecord.emailStatus,
       },
       issuer: tokenIssuer,
     });
