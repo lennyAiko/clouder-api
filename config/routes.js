@@ -9,6 +9,9 @@
  */
 
 module.exports.routes = {
+  "GET /": "/generic",
+  "GET /admin/dashboard": "admin/dashboard",
+
   "POST /auth/signup": "auth/signup",
   "POST /auth/signin": "auth/signin",
   "POST /auth/refresh": "auth/refresh-token",

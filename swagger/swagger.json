@@ -18,9 +18,6 @@
   "servers": [
     {
       "url": "http://localhost:1337/"
-    },
-    {
-      "url": "https://clouder-lkvb.onrender.com/"
     }
   ],
   "externalDocs": {
@@ -58,6 +55,9 @@
     {
       "name": "User",
       "description": "Sails blueprint actions for the **User** model"
+    },
+    {
+      "name": "Dashboard"
     },
     {
       "name": "Create"
@@ -260,11 +260,18 @@
           },
           "action": {
             "type": "string",
-            "enum": ["Observe", "Assist", "Perform"]
+            "enum": [
+              "Observe",
+              "Assist",
+              "Perform"
+            ]
           },
           "logBookType": {
             "type": "string",
-            "enum": ["logbook", "surgical"]
+            "enum": [
+              "logbook",
+              "surgical"
+            ]
           },
           "firstTitle": {
             "type": "string"
@@ -313,7 +320,12 @@
             "$ref": "#/components/schemas/pricing-without-required-constraint"
           },
           {
-            "required": ["title", "duration", "pricing", "plans"]
+            "required": [
+              "title",
+              "duration",
+              "pricing",
+              "plans"
+            ]
           }
         ]
       },
@@ -471,7 +483,10 @@
             "$ref": "#/components/schemas/token-without-required-constraint"
           },
           {
-            "required": ["userId", "token"]
+            "required": [
+              "userId",
+              "token"
+            ]
           }
         ]
       },
@@ -508,7 +523,12 @@
             "$ref": "#/components/schemas/user-without-required-constraint"
           },
           {
-            "required": ["fullName", "email", "password", "role"]
+            "required": [
+              "fullName",
+              "email",
+              "password",
+              "role"
+            ]
           }
         ]
       },
@@ -544,7 +564,11 @@
           "emailStatus": {
             "type": "string",
             "default": "unverified",
-            "enum": ["unverified", "verified", "change-requested"],
+            "enum": [
+              "unverified",
+              "verified",
+              "change-requested"
+            ],
             "example": "unverified"
           },
           "emailChangeCandidate": {
@@ -559,6 +583,15 @@
           "location": {
             "type": "string",
             "maxLength": 60
+          },
+          "status": {
+            "type": "string",
+            "default": "active",
+            "enum": [
+              "active",
+              "inactive"
+            ],
+            "example": "active"
           },
           "password": {
             "type": "string",
@@ -580,7 +613,10 @@
           },
           "role": {
             "type": "string",
-            "enum": ["supervisor", "client"]
+            "enum": [
+              "supervisor",
+              "client"
+            ]
           },
           "qualification": {
             "description": "Array of **qualification**'s or array of FK's when creating / updating / not populated",
@@ -750,7 +786,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["Pricing"],
+        "tags": [
+          "Pricing"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -817,7 +855,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Pricing"],
+        "tags": [
+          "Pricing"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -861,7 +901,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -930,7 +972,9 @@
       "get": {
         "summary": "Fetch",
         "description": "Fetch qualification.",
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -953,7 +997,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -1072,7 +1118,9 @@
       "get": {
         "summary": "Fetch",
         "description": "Fetch logbook.",
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1095,7 +1143,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -1193,7 +1243,9 @@
       "get": {
         "summary": "Fetch",
         "description": "Fetch course.",
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1216,7 +1268,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -1296,7 +1350,9 @@
       "get": {
         "summary": "Fetch",
         "description": "Fetch quality.",
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1319,7 +1375,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -1406,7 +1464,30 @@
       "get": {
         "summary": "Fetch",
         "description": "Fetch leadership.",
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "The requested resource"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/admin/dashboard": {
+      "get": {
+        "summary": "Dashboard",
+        "description": "Dashboard admin.",
+        "tags": [
+          "Dashboard"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1425,7 +1506,9 @@
       "post": {
         "summary": "Create",
         "description": "Create user.",
-        "tags": ["Create"],
+        "tags": [
+          "Create"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -1516,7 +1599,9 @@
       "post": {
         "summary": "Login",
         "description": "Login auth.",
-        "tags": ["Login"],
+        "tags": [
+          "Login"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -1558,7 +1643,9 @@
     "/auth/refresh": {
       "post": {
         "summary": "Refresh token",
-        "tags": ["Refresh token"],
+        "tags": [
+          "Refresh token"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -1588,7 +1675,9 @@
     "/auth/forgot_password": {
       "post": {
         "summary": "Forgot password",
-        "tags": ["Forgot password"],
+        "tags": [
+          "Forgot password"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -1616,7 +1705,9 @@
     "/auth/reset_password": {
       "post": {
         "summary": "Reset password",
-        "tags": ["Reset password"],
+        "tags": [
+          "Reset password"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -1667,7 +1758,9 @@
     "/auth/resend": {
       "post": {
         "summary": "Resend link",
-        "tags": ["Resend link"],
+        "tags": [
+          "Resend link"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -1711,7 +1804,9 @@
     "/auth/verify_email": {
       "get": {
         "summary": "Verify email",
-        "tags": ["Verify email"],
+        "tags": [
+          "Verify email"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -1759,7 +1854,9 @@
       "get": {
         "summary": "Logout",
         "description": "Logout auth.",
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1794,7 +1891,9 @@
       "get": {
         "summary": "Profile",
         "description": "Profile user.",
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1817,7 +1916,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -1900,7 +2001,9 @@
       "get": {
         "summary": "Read",
         "description": "Read qualification.",
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -1931,7 +2034,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -2003,7 +2108,9 @@
       "delete": {
         "summary": "Delete",
         "description": "Delete qualification.",
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -2032,7 +2139,9 @@
       "get": {
         "summary": "Read",
         "description": "Read logbook.",
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -2063,7 +2172,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -2185,7 +2296,9 @@
       "delete": {
         "summary": "Delete",
         "description": "Delete logbook.",
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -2214,7 +2327,9 @@
       "get": {
         "summary": "Read",
         "description": "Read course.",
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -2245,7 +2360,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -2346,7 +2463,9 @@
       "delete": {
         "summary": "Delete",
         "description": "Delete course.",
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -2375,7 +2494,9 @@
       "get": {
         "summary": "Read",
         "description": "Read quality.",
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -2406,7 +2527,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -2490,7 +2613,9 @@
       "delete": {
         "summary": "Delete",
         "description": "Delete quality.",
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -2523,7 +2648,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -2613,7 +2740,9 @@
       "delete": {
         "summary": "Delete",
         "description": "Delete leadership.",
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -2640,7 +2769,9 @@
       "get": {
         "summary": "Read",
         "description": "Read leadership.",
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -2673,7 +2804,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -2752,7 +2885,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-course"
@@ -2816,7 +2951,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -2953,7 +3090,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -3093,7 +3232,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-course"
@@ -3127,7 +3268,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -3206,7 +3349,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-leadership"
@@ -3270,7 +3415,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -3389,7 +3536,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -3511,7 +3660,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-leadership"
@@ -3545,7 +3696,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -3624,7 +3777,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-logbook"
@@ -3688,7 +3843,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -3853,7 +4010,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -4021,7 +4180,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-logbook"
@@ -4055,7 +4216,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["Pricing"],
+        "tags": [
+          "Pricing"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -4124,7 +4287,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["Pricing"],
+        "tags": [
+          "Pricing"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-pricing"
@@ -4178,7 +4343,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Pricing"],
+        "tags": [
+          "Pricing"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -4269,7 +4436,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Pricing"],
+        "tags": [
+          "Pricing"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-pricing"
@@ -4359,7 +4528,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["Pricing"],
+        "tags": [
+          "Pricing"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-pricing"
@@ -4393,7 +4564,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -4472,7 +4645,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-qualification"
@@ -4536,7 +4711,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -4637,7 +4814,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -4741,7 +4920,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-qualification"
@@ -4775,7 +4956,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -4854,7 +5037,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-quality"
@@ -4918,7 +5103,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -5030,7 +5217,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -5146,7 +5335,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-quality"
@@ -5180,7 +5371,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["Token"],
+        "tags": [
+          "Token"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -5249,7 +5442,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["Token"],
+        "tags": [
+          "Token"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-token"
@@ -5303,7 +5498,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Token"],
+        "tags": [
+          "Token"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -5379,7 +5576,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Token"],
+        "tags": [
+          "Token"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-token"
@@ -5456,7 +5655,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["Token"],
+        "tags": [
+          "Token"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-token"
@@ -5490,7 +5691,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -5513,7 +5716,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,status,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
           },
@@ -5523,7 +5726,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,status,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
           },
@@ -5569,7 +5772,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-user"
@@ -5580,7 +5785,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,status,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
           },
@@ -5590,7 +5795,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,status,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
           },
@@ -5633,7 +5838,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -5692,7 +5899,11 @@
             "schema": {
               "type": "string",
               "default": "unverified",
-              "enum": ["unverified", "verified", "change-requested"],
+              "enum": [
+                "unverified",
+                "verified",
+                "change-requested"
+              ],
               "example": "unverified"
             }
           },
@@ -5720,6 +5931,19 @@
             "schema": {
               "type": "string",
               "maxLength": 60
+            }
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "type": "string",
+              "default": "active",
+              "enum": [
+                "active",
+                "inactive"
+              ],
+              "example": "active"
             }
           },
           {
@@ -5766,7 +5990,10 @@
             "name": "role",
             "schema": {
               "type": "string",
-              "enum": ["supervisor", "client"]
+              "enum": [
+                "supervisor",
+                "client"
+              ]
             },
             "required": true
           },
@@ -5850,7 +6077,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -5928,7 +6157,11 @@
             "schema": {
               "type": "string",
               "default": "unverified",
-              "enum": ["unverified", "verified", "change-requested"],
+              "enum": [
+                "unverified",
+                "verified",
+                "change-requested"
+              ],
               "example": "unverified"
             }
           },
@@ -5941,6 +6174,19 @@
               "description": "unverified email address that this user wants to change to"
             },
             "description": "unverified email address that this user wants to change to"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "type": "string",
+              "default": "active",
+              "enum": [
+                "active",
+                "inactive"
+              ],
+              "example": "active"
+            }
           },
           {
             "in": "query",
@@ -5985,7 +6231,10 @@
             "name": "role",
             "schema": {
               "type": "string",
-              "enum": ["supervisor", "client"]
+              "enum": [
+                "supervisor",
+                "client"
+              ]
             }
           },
           {
@@ -6081,7 +6330,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-user"
@@ -6115,7 +6366,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/add-to",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/add-to"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-user"
@@ -6126,7 +6379,12 @@
             "required": true,
             "schema": {
               "type": "string",
-              "enum": ["qualification", "logbook", "course", "qi"]
+              "enum": [
+                "qualification",
+                "logbook",
+                "course",
+                "qi"
+              ]
             },
             "description": "The name of the association"
           },
@@ -6189,7 +6447,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/replace",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/replace"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-user"
@@ -6200,7 +6460,12 @@
             "required": true,
             "schema": {
               "type": "string",
-              "enum": ["qualification", "logbook", "course", "qi"]
+              "enum": [
+                "qualification",
+                "logbook",
+                "course",
+                "qi"
+              ]
             },
             "description": "The name of the association"
           },
@@ -6285,7 +6550,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/remove-from",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/remove-from"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-user"
@@ -6296,7 +6563,12 @@
             "required": true,
             "schema": {
               "type": "string",
-              "enum": ["qualification", "logbook", "course", "qi"]
+              "enum": [
+                "qualification",
+                "logbook",
+                "course",
+                "qi"
+              ]
             },
             "description": "The name of the association"
           },
@@ -6359,7 +6631,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -6436,7 +6710,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -6540,7 +6816,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-course"
@@ -6602,7 +6880,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -6707,7 +6987,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-course"
@@ -6741,7 +7023,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/populate-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/populate-where"
         },
-        "tags": ["Course"],
+        "tags": [
+          "Course"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-course"
@@ -6752,7 +7036,9 @@
             "required": true,
             "schema": {
               "type": "string",
-              "enum": ["owner"]
+              "enum": [
+                "owner"
+              ]
             },
             "description": "The name of the association"
           },
@@ -6824,7 +7110,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -6901,7 +7189,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -6994,7 +7284,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-leadership"
@@ -7056,7 +7348,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -7150,7 +7444,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-leadership"
@@ -7184,7 +7480,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/populate-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/populate-where"
         },
-        "tags": ["Leadership"],
+        "tags": [
+          "Leadership"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-leadership"
@@ -7195,7 +7493,9 @@
             "required": true,
             "schema": {
               "type": "string",
-              "enum": ["owner"]
+              "enum": [
+                "owner"
+              ]
             },
             "description": "The name of the association"
           },
@@ -7267,7 +7567,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -7344,7 +7646,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -7469,7 +7773,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-logbook"
@@ -7531,7 +7837,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -7657,7 +7965,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-logbook"
@@ -7691,7 +8001,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/populate-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/populate-where"
         },
-        "tags": ["Logbook"],
+        "tags": [
+          "Logbook"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-logbook"
@@ -7702,7 +8014,9 @@
             "required": true,
             "schema": {
               "type": "string",
-              "enum": ["owner"]
+              "enum": [
+                "owner"
+              ]
             },
             "description": "The name of the association"
           },
@@ -7774,7 +8088,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["Pricing"],
+        "tags": [
+          "Pricing"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-pricing"
@@ -7826,7 +8142,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Pricing"],
+        "tags": [
+          "Pricing"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-pricing"
@@ -7872,7 +8190,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["Pricing"],
+        "tags": [
+          "Pricing"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-pricing"
@@ -7906,7 +8226,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -7983,7 +8305,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -8058,7 +8382,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-qualification"
@@ -8120,7 +8446,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -8196,7 +8524,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-qualification"
@@ -8230,7 +8560,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/populate-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/populate-where"
         },
-        "tags": ["Qualification"],
+        "tags": [
+          "Qualification"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-qualification"
@@ -8241,7 +8573,9 @@
             "required": true,
             "schema": {
               "type": "string",
-              "enum": ["owner"]
+              "enum": [
+                "owner"
+              ]
             },
             "description": "The name of the association"
           },
@@ -8313,7 +8647,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -8390,7 +8726,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -8476,7 +8814,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-quality"
@@ -8538,7 +8878,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -8626,7 +8968,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-quality"
@@ -8660,7 +9004,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/populate-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/populate-where"
         },
-        "tags": ["Quality"],
+        "tags": [
+          "Quality"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-quality"
@@ -8671,7 +9017,9 @@
             "required": true,
             "schema": {
               "type": "string",
-              "enum": ["owner"]
+              "enum": [
+                "owner"
+              ]
             },
             "description": "The name of the association"
           },
@@ -8743,7 +9091,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["Token"],
+        "tags": [
+          "Token"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -8810,7 +9160,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["Token"],
+        "tags": [
+          "Token"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -8854,7 +9206,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["Token"],
+        "tags": [
+          "Token"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-token"
@@ -8906,7 +9260,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["Token"],
+        "tags": [
+          "Token"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-token"
@@ -8952,7 +9308,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["Token"],
+        "tags": [
+          "Token"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-token"
@@ -8986,7 +9344,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-where"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/AttributeFilterParam"
@@ -9009,7 +9369,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,status,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
           },
@@ -9019,7 +9379,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,status,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
           },
@@ -9063,7 +9423,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/create",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/create"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -9107,7 +9469,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/find-one",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/find-one"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-user"
@@ -9118,7 +9482,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,status,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
           },
@@ -9128,7 +9492,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,status,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
           },
@@ -9169,7 +9533,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/update",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/update"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -9254,7 +9620,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/destroy",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/destroy"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-user"
@@ -9288,7 +9656,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/add-to",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/add-to"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-user"
@@ -9299,7 +9669,12 @@
             "required": true,
             "schema": {
               "type": "string",
-              "enum": ["qualification", "logbook", "course", "qi"]
+              "enum": [
+                "qualification",
+                "logbook",
+                "course",
+                "qi"
+              ]
             },
             "description": "The name of the association"
           },
@@ -9360,7 +9735,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/remove-from",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/remove-from"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-user"
@@ -9371,7 +9748,12 @@
             "required": true,
             "schema": {
               "type": "string",
-              "enum": ["qualification", "logbook", "course", "qi"]
+              "enum": [
+                "qualification",
+                "logbook",
+                "course",
+                "qi"
+              ]
             },
             "description": "The name of the association"
           },
@@ -9434,7 +9816,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/replace",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/replace"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-user"
@@ -9445,7 +9829,12 @@
             "required": true,
             "schema": {
               "type": "string",
-              "enum": ["qualification", "logbook", "course", "qi"]
+              "enum": [
+                "qualification",
+                "logbook",
+                "course",
+                "qi"
+              ]
             },
             "description": "The name of the association"
           }
@@ -9511,7 +9900,9 @@
           "url": "https://sailsjs.com/documentation/reference/blueprint-api/populate-where",
           "description": "See https://sailsjs.com/documentation/reference/blueprint-api/populate-where"
         },
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ModelPKParam-user"
@@ -9522,7 +9913,12 @@
             "required": true,
             "schema": {
               "type": "string",
-              "enum": ["qualification", "logbook", "course", "qi"]
+              "enum": [
+                "qualification",
+                "logbook",
+                "course",
+                "qi"
+              ]
             },
             "description": "The name of the association"
           },
@@ -9544,7 +9940,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,status,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to include in the result, specified as a comma-delimited list. By default, all attributes are selected. Not valid for plural (“collection”) association attributes."
           },
@@ -9554,7 +9950,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
+              "example": "createdAt,updatedAt,id,fullName,img,email,emailStatus,emailChangeCandidate,phone,location,status,password,passwordResetToken,passwordResetTokenExpiresAt,emailProofToken,emailProofTokenExpiresAt,role,qualification,logbook,course,qi"
             },
             "description": "The attributes to exclude from the result, specified as a comma-delimited list. Cannot be used in conjuction with `select`. Not valid for plural (“collection”) association attributes."
           }
