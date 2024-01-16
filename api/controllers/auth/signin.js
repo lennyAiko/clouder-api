@@ -80,6 +80,7 @@ module.exports = {
     return exits.success({
       access: token.access,
       refresh: token.refresh,
+      role: userRecord.role,
     });
   },
 };
