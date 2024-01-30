@@ -9,17 +9,21 @@
  */
 
 module.exports.policies = {
-
   /***************************************************************************
-  *                                                                          *
-  * Default policy for all controllers and actions, unless overridden.       *
-  * (`true` allows public access)                                            *
-  * '': 'single policy'                                                      *
-  * '': ['multiple', 'policies]                                              *
-  *                                                                          *
-  ***************************************************************************/
+   *                                                                          *
+   * Default policy for all controllers and actions, unless overridden.       *
+   * (`true` allows public access)                                            *
+   * '': 'single policy'                                                      *
+   * '': ['multiple', 'policies]                                              *
+   *                                                                          *
+   ***************************************************************************/
 
-  'auth/*': 'pathLogger',
-  '*': ['pathLogger', 'isAuthenticated', 'checkIssuer'],
-
+  "auth/*": "pathLogger",
+  // swagger: "pathLogger",
+  "course/*": ["pathLogger", "isAuthenticated", "checkIssuer"],
+  "leadership/*": ["pathLogger", "isAuthenticated", "checkIssuer"],
+  "logbook/*": ["pathLogger", "isAuthenticated", "checkIssuer"],
+  "qualification/*": ["pathLogger", "isAuthenticated", "checkIssuer"],
+  "quality/*": ["pathLogger", "isAuthenticated", "checkIssuer"],
+  "user/*": ["pathLogger", "isAuthenticated", "checkIssuer"],
 };
