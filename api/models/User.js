@@ -50,6 +50,12 @@ module.exports = {
       maxLength: 60,
     },
 
+    status: {
+      type: "string",
+      isIn: ["active", "inactive"],
+      defaultsTo: "active",
+    },
+
     password: {
       type: "string",
       required: true,

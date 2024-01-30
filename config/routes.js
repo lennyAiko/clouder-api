@@ -9,6 +9,14 @@
  */
 
 module.exports.routes = {
+  "GET /": "/generic",
+
+  "GET /admin/dashboard": "admin/dashboard",
+  "GET /admin/users": "admin/users",
+  "PATCH /admin/users/:id/status": "admin/status",
+  "PATCH /admin/users/:id/role": "admin/role",
+  "PATCH /admin/users/:id/verify": "admin/verify",
+
   "POST /auth/signup": "auth/signup",
   "POST /auth/signin": "auth/signin",
   "POST /auth/refresh": "auth/refresh-token",
