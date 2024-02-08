@@ -45,7 +45,7 @@ module.exports = {
      ***************************************************************************/
     default: {
       adapter: require("sails-mongo"),
-      url: "mongodb+srv://lenny:%40Security21@cluster0.836bk4k.mongodb.net/clouder",
+      url: process.env.DB_URL,
       //--------------------------------------------------------------------------
       //  /\   To avoid checking it in to version control, you might opt to set
       //  ||   sensitive credentials like `url` using an environment variable.
