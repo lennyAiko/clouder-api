@@ -50,5 +50,6 @@ module.exports.datastores = {
     adapter: require("sails-mongo"),
     // url: 'mongodb://0.0.0.0:27017/clouder',
     url: process.env.DB_URL,
+    ssl: true,
   },
 };
