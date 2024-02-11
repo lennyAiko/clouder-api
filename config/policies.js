@@ -19,12 +19,28 @@ module.exports.policies = {
    ***************************************************************************/
 
   "auth/*": "pathLogger",
-  "*": ["pathLogger", "isAuthenticated", "checkIssuer", "verifyEmail"],
+  // swagger: "pathLogger",
+  "course/*": ["pathLogger", "isAuthenticated", "checkIssuer", "verifyEmail"],
+  "leadership/*": [
+    "pathLogger",
+    "isAuthenticated",
+    "checkIssuer",
+    "verifyEmail",
+  ],
+  "logbook/*": ["pathLogger", "isAuthenticated", "checkIssuer", "verifyEmail"],
+  "qualification/*": [
+    "pathLogger",
+    "isAuthenticated",
+    "checkIssuer",
+    "verifyEmail",
+  ],
+  "quality/*": ["pathLogger", "isAuthenticated", "checkIssuer", "verifyEmail"],
+  "user/*": ["pathLogger", "isAuthenticated", "checkIssuer", "verifyEmail"],
   "admin/*": [
     "pathLogger",
     "isAuthenticated",
     "checkIssuer",
-    "verifyAdmin",
     "verifyEmail",
+    "verifyAdmin",
   ],
 };

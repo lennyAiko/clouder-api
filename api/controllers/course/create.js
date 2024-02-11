@@ -70,6 +70,17 @@ module.exports = {
   }) {
     let documentRandomName;
 
+    let courseRecord = await Course.create({
+      courseTitle,
+      institution,
+      year,
+      certificateNo,
+      challenges,
+      keyPositives,
+      doDifferently,
+      owner: this.req.user.id,
+    }).fetch();
+
     this.req.file("document").upload(
       {
         maxBytes: 5000000, // 5MB
@@ -98,17 +109,6 @@ module.exports = {
         }
       }
     );
-
-    let courseRecord = await Course.create({
-      courseTitle,
-      institution,
-      year,
-      certificateNo,
-      challenges,
-      keyPositives,
-      doDifferently,
-      owner: this.req.user.id,
-    }).fetch();
 
     // All done.
     return "Successful";
