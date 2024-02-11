@@ -18,7 +18,7 @@
     "sails-hook-orm": "^4.0.0",
     "sails-hook-rate-limit": "^0.0.2",
     "sails-hook-sockets": "^2.0.0",
-    "sails-mongo": "^2.0.1",
+    "sails-mongo": "^2.1.0",
     "skipper": "^0.9.4",
     "skipper-gridfs": "^1.0.2",
     "swagger-jsdoc": "^6.2.8",
