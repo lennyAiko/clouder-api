@@ -1,5 +1,3 @@
-const { routes } = require("../../../config/routes");
-
 module.exports = function (sails) {
   const swaggerJSDoc = require("swagger-jsdoc");
 
@@ -21,9 +19,7 @@ module.exports = function (sails) {
         },
       ],
     },
-    apis: [
-      `${require("path").resolve(sails.config.appPath, "config/routes.js")}`,
-    ],
+    apis: ["./routes.js"],
   };
 
   const swaggerSpec = swaggerJSDoc(options);
