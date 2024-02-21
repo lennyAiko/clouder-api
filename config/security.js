@@ -30,9 +30,7 @@ module.exports.security = {
   cors: {
     allRoutes: true,
     allowOrigins: [
-      "http://localhost:3000",
-      "http://localhost:3001",
-      "http://localhost:3002",
+      "http://localhost:3945",
       "https://clouder-ten.vercel.app",
       "https://clouder-nu.vercel.app",
     ],
