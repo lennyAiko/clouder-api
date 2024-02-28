@@ -56,6 +56,7 @@ module.exports = {
         role: userRecord.role,
         status: userRecord.status,
         emailStatus: userRecord.emailStatus,
+        plan: userRecord.plan,
       },
       issuer: tokenIssuer,
     });

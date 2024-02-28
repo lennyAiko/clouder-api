@@ -26,6 +26,12 @@ module.exports = {
       maxLength: 200,
     },
 
+    plan: {
+      type: "string",
+      isIn: ["trial", "basic", "premium", "infinite"],
+      defaultsTo: "trial",
+    },
+
     emailStatus: {
       type: "string",
       isIn: ["unverified", "verified", "change-requested"],

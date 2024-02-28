@@ -26,6 +26,7 @@ module.exports.policies = {
     "isAuthenticated",
     "checkIssuer",
     "verifyEmail",
+    "trialAccess",
   ],
   "logbook/*": ["pathLogger", "isAuthenticated", "checkIssuer", "verifyEmail"],
   "qualification/*": [
@@ -34,7 +35,27 @@ module.exports.policies = {
     "checkIssuer",
     "verifyEmail",
   ],
-  "quality/*": ["pathLogger", "isAuthenticated", "checkIssuer", "verifyEmail"],
+  "quality/*": [
+    "pathLogger",
+    "isAuthenticated",
+    "checkIssuer",
+    "verifyEmail",
+    "trialAccess",
+  ],
+  "research/*": [
+    "pathLogger",
+    "isAuthenticated",
+    "checkIssuer",
+    "verifyEmail",
+    "trialAccess",
+  ],
+  "teaching/*": [
+    "pathLogger",
+    "isAuthenticated",
+    "checkIssuer",
+    "verifyEmail",
+    "trialAccess",
+  ],
   "user/*": ["pathLogger", "isAuthenticated", "checkIssuer", "verifyEmail"],
   "admin/*": [
     "pathLogger",
