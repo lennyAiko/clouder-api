@@ -82,6 +82,7 @@ module.exports = {
       access: token.access,
       refresh: token.refresh,
       role: userRecord.role,
+      plan: userRecord.plan,
     });
   },
 };
