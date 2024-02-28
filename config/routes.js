@@ -62,4 +62,10 @@ module.exports.routes = {
   "GET /leaderships": "leadership/fetch",
   "DELETE /leaderships/:id": "leadership/delete",
   "GET /leaderships/:id": "leadership/read",
+
+  "POST /teaching": "leadership/create",
+  "PATCH /teaching/:id": "leadership/update",
+  "GET /teaching": "leadership/fetch",
+  "DELETE /teaching/:id": "leadership/delete",
+  "GET /teaching/:id": "leadership/read",
 };
