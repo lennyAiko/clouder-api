@@ -14,6 +14,8 @@
 module.exports.routes = {
   "GET /": "/generic",
 
+  // "POST /contact": "auth/contact",
+
   "GET /admin/dashboard": "admin/dashboard",
   "GET /admin/users": "admin/users",
   "PATCH /admin/users/:id/status": "admin/status",
@@ -63,9 +65,15 @@ module.exports.routes = {
   "DELETE /leaderships/:id": "leadership/delete",
   "GET /leaderships/:id": "leadership/read",
 
-  "POST /teaching": "leadership/create",
-  "PATCH /teaching/:id": "leadership/update",
-  "GET /teaching": "leadership/fetch",
-  "DELETE /teaching/:id": "leadership/delete",
-  "GET /teaching/:id": "leadership/read",
+  "POST /teaching": "teaching/create",
+  "PATCH /teaching/:id": "teaching/update",
+  "GET /teaching": "teaching/fetch",
+  "DELETE /teaching/:id": "teaching/delete",
+  "GET /teaching/:id": "teaching/read",
+
+  "POST /research": "research/create",
+  "PATCH /research/:id": "research/update",
+  "GET /research": "research/fetch",
+  "DELETE /research/:id": "research/delete",
+  "GET /research/:id": "research/read",
 };

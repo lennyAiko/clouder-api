@@ -1,5 +1,5 @@
 /**
- * Teaching.js
+ * Research.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -10,32 +10,30 @@ module.exports = {
     title: {
       type: "string",
       required: true,
-      maxLength: 150,
-      minLength: 3,
+      maxLength: 300,
     },
 
     year: {
       type: "string",
       required: true,
+      maxLength: 10,
       minLength: 4,
     },
 
-    qualificationYear: {
-      columnName: "qualification_year",
-      type: "string",
+    authors: {
+      type: "ref",
       required: true,
-    },
-
-    document: {
-      type: "string",
     },
 
     summary: {
       type: "string",
     },
 
-    keyTakeaway: {
-      columnName: "key_takeaway",
+    findings: {
+      type: "string",
+    },
+
+    area: {
       type: "string",
     },
 
