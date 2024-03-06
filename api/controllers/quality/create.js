@@ -33,6 +33,11 @@ module.exports = {
       type: "string",
       required: true,
     },
+
+    type: {
+      type: "string",
+      required: true,
+    },
   },
 
   exits: {
@@ -43,7 +48,7 @@ module.exports = {
   },
 
   fn: async function (
-    { title, year, details, challenges, keyPositives, doDifferently },
+    { title, year, details, challenges, keyPositives, doDifferently, type },
     exits
   ) {
     let qualityRecord = await Quality.create({
@@ -54,6 +59,7 @@ module.exports = {
       keyPositives,
       doDifferently,
       challenges,
+      type,
     }).fetch();
 
     // All done.

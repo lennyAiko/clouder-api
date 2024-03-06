@@ -36,6 +36,11 @@ module.exports = {
       required: true,
     },
 
+    qualificationType: {
+      type: "string",
+      required: true,
+    },
+
     summary: {
       type: "string",
     },
@@ -53,6 +58,7 @@ module.exports = {
     qualificationYear,
     summary,
     keyTakeaway,
+    qualificationType,
   }) {
     let docRandomName;
 
@@ -62,6 +68,7 @@ module.exports = {
       qualificationYear,
       summary,
       keyTakeaway,
+      qualificationType,
       owner: this.req.user.id,
     }).fetch();
 

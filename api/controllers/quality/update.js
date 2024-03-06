@@ -1,62 +1,68 @@
 module.exports = {
+  friendlyName: "Update",
 
-
-  friendlyName: 'Update',
-
-
-  description: 'Update quality.',
-
+  description: "Update quality.",
 
   inputs: {
-
     title: {
-      type: 'json',
+      type: "json",
     },
-    
+
     year: {
-      type: 'json',
+      type: "json",
     },
 
     details: {
-      type: 'json',
+      type: "json",
     },
 
     challenges: {
-      type: 'string',
+      type: "string",
     },
 
     keyPositives: {
-      type: 'string',
+      type: "string",
     },
 
     doDifferently: {
-      type: 'string',
-    }
+      type: "string",
+    },
 
+    type: {
+      type: "string",
+      required: true,
+    },
   },
-
 
   exits: {
-
     badCombo: {
       statusCode: 400,
-      description: 'This is for error from user'
-    }
-
+      description: "This is for error from user",
+    },
   },
 
-
-  fn: async function ({title, year, details, challenges, keyPositives, doDifferently}) {
-
-    let qualityRecord = await Quality.updateOne({ id: this.req.params.id })
-    .set({ 
-        title, year, details, challenges, keyPositives, doDifferently
-     })
+  fn: async function ({
+    title,
+    year,
+    details,
+    challenges,
+    keyPositives,
+    doDifferently,
+    type,
+  }) {
+    let qualityRecord = await Quality.updateOne({ id: this.req.params.id }).set(
+      {
+        title,
+        year,
+        details,
+        challenges,
+        keyPositives,
+        doDifferently,
+        type,
+      }
+    );
 
     // All done.
     return qualityRecord;
-
-  }
-
-
+  },
 };
