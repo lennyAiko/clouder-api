@@ -19,6 +19,12 @@ module.exports = {
       maxLength: 12,
     },
 
+    type: {
+      type: "string",
+      isIn: ["morbidity", "clinical", "case"],
+      defaultsTo: "morbidity",
+    },
+
     details: {
       type: "string",
       required: true,
