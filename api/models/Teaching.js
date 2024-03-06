@@ -26,6 +26,11 @@ module.exports = {
       required: true,
     },
 
+    qualificationType: {
+      columnName: "qualification_type",
+      type: "string",
+    },
+
     document: {
       type: "string",
     },
