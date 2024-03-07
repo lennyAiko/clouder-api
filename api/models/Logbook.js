@@ -15,7 +15,7 @@ module.exports = {
 
     logBookType: {
       type: "string",
-      isIn: ["logbook", "surgical"],
+      isIn: ["medical", "surgical"],
       required: true,
     },
 
