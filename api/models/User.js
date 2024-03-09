@@ -116,6 +116,11 @@ module.exports = {
       collection: "quality",
       via: "owner",
     },
+
+    features: {
+      collection: "features",
+      via: "owner",
+    },
   },
 
   customToJSON: function () {

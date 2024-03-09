@@ -72,6 +72,10 @@ module.exports = {
         Date.now() + sails.config.custom.emailProofTokenTTL,
     }).fetch();
 
+    await Features.create({
+      owner: unverifiedUser.id,
+    });
+
     await sails.helpers.mail.send.with({
       subject: "Verify your email",
       template: "email-verify-account",
