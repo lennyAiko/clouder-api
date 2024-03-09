@@ -53,6 +53,12 @@ module.exports = {
       doDifferently,
     }).fetch();
 
+    let leadershipFeature = await Features.findOne({ owner: userId });
+
+    await Features.updateOne({ owner: userId }).set({
+      leaderships: leadershipFeature + 1,
+    });
+
     return {
       status: 200,
       message: "Successfully created a leadership",
