@@ -1,3 +1,5 @@
+const Features = require("../../models/Features");
+
 // @ts-nocheck
 require("dotenv").config();
 const UPLOAD_URL = process.env.UPLOAD_URL;
@@ -116,6 +118,12 @@ module.exports = {
         }
       }
     );
+
+    let logbookFeature = await Features.findOne({ owner: userId });
+
+    await Features.updateOne({ owner: userId }).set({
+      logbook: logbookFeature + 1,
+    });
 
     // All done.
     return "Successful";
