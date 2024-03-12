@@ -37,6 +37,7 @@ module.exports = {
         status: decode.user.status,
         emailStatus: decode.user.emailStatus,
         plan: decode.user.plan,
+        subscriptions: decode.user.subscriptions,
       };
       const accessToken = await sails.helpers.refreshToken({
         user: payload,

@@ -46,6 +46,13 @@ module.exports = {
         });
       });
 
+    const features = await Features.findOne({ owner: userRecord.id });
+    if (!features) {
+      return exits.badCombo({
+        error: "Invalid credentials",
+      });
+    }
+
     const token = await sails.helpers.signToken({
       user: {
         id: userRecord.id,
@@ -57,6 +64,7 @@ module.exports = {
         status: userRecord.status,
         emailStatus: userRecord.emailStatus,
         plan: userRecord.plan,
+        subscriptions: features.subscriptions,
       },
       issuer: tokenIssuer,
     });
