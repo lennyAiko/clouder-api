@@ -11,6 +11,9 @@ module.exports = async function (req, res, proceed) {
       }
 
       if (req.user.subscriptions <= 4) {
+        if (req.user.plan === "premium" || req.user.plan === "infinite") {
+          return proceed();
+        }
         return res.status(401).json({ status: 401, message: "Unauthorized" });
       }
     }
