@@ -2,7 +2,7 @@ require("dotenv").config();
 
 module.exports.mail = {
   // default: process.env.MAIL_MAILER,
-  default: "resend",
+  default: "smtp",
   mailers: {
     log: {
       transport: "log",

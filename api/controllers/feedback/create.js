@@ -67,7 +67,18 @@ module.exports = {
       default:
         return exits.badCombo("Invalid option");
     }
+
+    await sails.helpers.mail.send.with({
+      subject: "Verify your email",
+      template: "email-verify-account",
+      to: email,
+      templateData: {
+        token: "hdjfdsjfhdf",
+        fullName: name,
+      },
+    });
+
     // All done.
-    return inputs;
+    return exits.success("Feedback requested successfully");
   },
 };
