@@ -76,4 +76,7 @@ module.exports.routes = {
   "GET /research": "research/fetch",
   "DELETE /research/:id": "research/delete",
   "GET /research/:id": "research/read",
+
+  "POST /feedbacks/:id": "feedback/create",
+  "GET /feedbacks/:id": "feedback/fetch",
 };
