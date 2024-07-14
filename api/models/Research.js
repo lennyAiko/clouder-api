@@ -37,6 +37,10 @@ module.exports = {
       type: "string",
     },
 
+    feedback: {
+      type: "json",
+    },
+
     owner: {
       model: "user",
     },

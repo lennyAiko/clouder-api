@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 50px;
+        border-radius: 8px;
+        width: 50%;
+        height: 50%;
+        font-size: large;
+        color: #7a7474;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+      .container img {
+        width: 20%;
+        display: block;
+        margin-bottom: 2em;
+      }
+      .container p {
+        color: #7a7474;
+      }
+      .container a {
+        color: #03a9f4;
+      }
+      @media (max-width: 768px) {
+        .container {
+          width: 70%;
+          height: auto;
+          padding: 30px;
+          margin: 10px;
+          font-size: medium;
+        }
+        .container img {
+          width: 30%;
+        }
+      }
+      @media (max-width: 480px) {
+        .container {
+          width: 90%;
+          height: auto;
+          padding: 20px;
+          font-size: small;
+        }
+        .container img {
+          width: 40%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="./clouder.svg" alt="logo" />
+      <p>Hey <%= fullName %></p>
+      <p>
+        <%= user %> has requested feedback from you on a research project on
+        Clouder.
+      </p>
+      <p>Kindly follow the link below to drop your feedback</p>
+      <a href="#">www.clouderfeedback.com</a>
+      <p>Please ignore this email if you choose not to proceed.</p>
+      <section>
+        <p>Warm regards</p>
+        <p>The Clouder team</p>
+      </section>
+    </div>
+  </body>
+</html>

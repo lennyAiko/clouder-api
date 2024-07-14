@@ -79,4 +79,10 @@ module.exports.policies = {
     "verifyEmail",
     "verifyAdmin",
   ],
+  "feedback/create": [
+    "pathLogger",
+    "isAuthenticated",
+    "checkIssuer",
+    "verifyEmail",
+  ],
 };
