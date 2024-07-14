@@ -67,6 +67,10 @@ module.exports = {
       required: true,
     },
 
+    feedback: {
+      type: "json",
+    },
+
     // reference to user
     owner: {
       model: "user",

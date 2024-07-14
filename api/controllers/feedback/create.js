@@ -69,12 +69,12 @@ module.exports = {
     }
 
     await sails.helpers.mail.send.with({
-      subject: "Verify your email",
-      template: "email-verify-account",
+      subject: "Feedback Request on Clouder",
+      template: "email-request-feedback",
       to: email,
       templateData: {
-        token: "hdjfdsjfhdf",
         fullName: name,
+        user: this.req.user.fullName,
       },
     });
 

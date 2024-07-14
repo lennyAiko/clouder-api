@@ -6,57 +6,56 @@
  */
 
 module.exports = {
-
   attributes: {
-
     courseTitle: {
-      type: 'string',
+      type: "string",
       required: true,
-      maxLength: 150
+      maxLength: 150,
     },
 
     institution: {
-      type: 'string',
+      type: "string",
       required: true,
-      maxLength: 250
+      maxLength: 250,
     },
 
     year: {
-      type: 'string',
+      type: "string",
       required: true,
-      maxLength: 4
+      maxLength: 4,
     },
 
     certificateNo: {
-      type: 'string',
-      required: true
+      type: "string",
+      required: true,
     },
 
     document: {
-      type: 'string'
+      type: "string",
     },
 
     challenges: {
-      type: 'string',
-      required: true
+      type: "string",
+      required: true,
     },
 
     keyPositives: {
-      type: 'string',
-      required: true
+      type: "string",
+      required: true,
     },
 
     doDifferently: {
-      type: 'string',
+      type: "string",
       required: true,
+    },
+
+    feedback: {
+      type: "json",
     },
 
     // reference to user
     owner: {
-      model: 'user'
-    }
-
+      model: "user",
+    },
   },
-
 };
-
