@@ -25,31 +25,31 @@ module.exports = {
     },
   },
 
-  fn: async function ({ name, title, role, email, id, option }, exits) {
-    let data;
+  fn: async function ({ id, option }, exits) {
     switch (option) {
       case "courses":
         data = await Course.findOne({ id });
         if (!data) {
           return exits.badCombo("Course not found");
         }
-        break;
+        // All done.
+        return exits.success(data);
       case "research":
         data = await Research.findOne({ id });
         if (!data) {
           return exits.badCombo("Research not found");
         }
-        break;
+        // All done.
+        return exits.success(data);
       case "logbook":
         data = await Logbook.findOne({ id });
         if (!data) {
           return exits.badCombo("Logbook not found");
         }
-        break;
+        // All done.
+        return exits.success(data);
       default:
         return exits.badCombo("Invalid option");
     }
-    // All done.
-    return data;
   },
 };
