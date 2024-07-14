@@ -79,4 +79,5 @@ module.exports.routes = {
 
   "POST /feedbacks/:id": "feedback/create",
   "GET /feedbacks/:id": "feedback/fetch",
+  "POST /feedbacks/submit/:id": "feedback/submit",
 };
