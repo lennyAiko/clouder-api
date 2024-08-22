@@ -80,4 +80,7 @@ module.exports.routes = {
   "POST /feedbacks/:id": "feedback/create",
   "GET /feedbacks/:id": "feedback/fetch",
   "POST /feedbacks/submit/:id": "feedback/submit",
+
+  "POST /api/paystack": "payment/paystack",
+  "GET /api/paystack/callback": "payment/paystack-callback",
 };
