@@ -15,10 +15,6 @@ module.exports = {
       required: true,
       isEmail: true,
     },
-    courseTitle: {
-      type: "string",
-      required: true,
-    },
   },
 
   exits: {},
