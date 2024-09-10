@@ -14,8 +14,6 @@
 module.exports.routes = {
   "GET /": "/generic",
 
-  // "POST /contact": "auth/contact",
-
   "GET /admin/dashboard": "admin/dashboard",
   "GET /admin/users": "admin/users",
   "PATCH /admin/users/:id/status": "admin/status",
@@ -80,4 +78,12 @@ module.exports.routes = {
   "POST /feedbacks/:id": "feedback/create",
   "GET /feedbacks/:id": "feedback/fetch",
   "POST /feedbacks/submit/:id": "feedback/submit",
+
+  "POST /messages/send": "message/send",
+  "GET /messages/": "message/fetch",
+  "GET /messages/:id": "message/read",
+  "DELETE /messages/:id": "message/delete",
+
+  "POST /api/paystack": "payment/paystack",
+  "GET /api/paystack/callback": "payment/paystack-callback",
 };

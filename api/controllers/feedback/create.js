@@ -68,6 +68,10 @@ module.exports = {
         return exits.badCombo("Invalid option");
     }
 
+    if (data.feedbackRequested) {
+      return exits.badCombo("Feedback already requested");
+    }
+
     await sails.helpers.mail.send.with({
       subject: "Feedback Request on Clouder",
       template: "email-request-feedback",
@@ -75,8 +79,12 @@ module.exports = {
       templateData: {
         fullName: name,
         user: this.req.user.fullName,
+        option,
+        id,
       },
     });
+
+    data.updateOne({ feedbackRequested: true });
 
     // All done.
     return exits.success("Feedback requested successfully");

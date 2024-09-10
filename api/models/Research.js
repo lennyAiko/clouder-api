@@ -41,6 +41,11 @@ module.exports = {
       type: "json",
     },
 
+    feedbackRequested: {
+      type: "boolean",
+      defaultsTo: false,
+    },
+
     owner: {
       model: "user",
     },

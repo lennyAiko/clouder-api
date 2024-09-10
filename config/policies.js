@@ -85,4 +85,17 @@ module.exports.policies = {
     "checkIssuer",
     "verifyEmail",
   ],
+  "message/send": [
+    "pathLogger",
+    "isAuthenticated",
+    "checkIssuer",
+    "verifyEmail",
+  ],
+  "message/*": [
+    "pathLogger",
+    "isAuthenticated",
+    "checkIssuer",
+    "verifyEmail",
+    // "verifyAdmin",
+  ],
 };
