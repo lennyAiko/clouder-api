@@ -1,14 +1,14 @@
 module.exports = {
   friendlyName: "Delete",
 
-  description: "Delete logbook.",
+  description: "Delete message.",
 
   inputs: {},
 
   exits: {},
 
   fn: async function (inputs) {
-    await Logbook.destroyOne({ id: this.req.params.id });
+    await Message.destroyOne({ id: this.req.params.id });
 
     // All done.
     return "Successful";
