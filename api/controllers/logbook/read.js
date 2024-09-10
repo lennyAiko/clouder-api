@@ -1,34 +1,20 @@
 module.exports = {
+  friendlyName: "Read",
 
+  description: "Read logbook.",
 
-  friendlyName: 'Read',
+  inputs: {},
 
-
-  description: 'Read logbook.',
-
-
-  inputs: {
-
-  },
-
-
-  exits: {
-
-  },
-
+  exits: {},
 
   fn: async function (inputs) {
-
     let logbookRecord = await Logbook.findOne({ id: this.req.params.id });
 
     if (!logbookRecord) {
-      return this.res.status(400).json('Could not find logbook');
+      return this.res.status(400).json("Could not find logbook");
     }
 
     // All done.
     return logbookRecord;
-
-  }
-
-
+  },
 };
