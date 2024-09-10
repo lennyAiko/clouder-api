@@ -1,30 +1,16 @@
 module.exports = {
+  friendlyName: "Fetch",
 
+  description: "Fetch logbook.",
 
-  friendlyName: 'Fetch',
+  inputs: {},
 
-
-  description: 'Fetch logbook.',
-
-
-  inputs: {
-
-  },
-
-
-  exits: {
-
-  },
-
+  exits: {},
 
   fn: async function (inputs) {
-
     let logbookRecords = await Logbook.find({ owner: this.req.user.id });
 
     // All done.
     return logbookRecords;
-
-  }
-
-
+  },
 };
