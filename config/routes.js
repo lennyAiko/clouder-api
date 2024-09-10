@@ -81,6 +81,11 @@ module.exports.routes = {
   "GET /feedbacks/:id": "feedback/fetch",
   "POST /feedbacks/submit/:id": "feedback/submit",
 
+  "POST /messages/send": "message/send",
+  "GET /messages/fetch": "message/fetch",
+  "GET /messages/read": "message/read",
+  "DELETE /messages/delete": "message/delete",
+
   "POST /api/paystack": "payment/paystack",
   "GET /api/paystack/callback": "payment/paystack-callback",
 };
