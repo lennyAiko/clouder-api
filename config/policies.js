@@ -85,7 +85,7 @@ module.exports.policies = {
     "checkIssuer",
     "verifyEmail",
   ],
-  "message/create": [
+  "message/send": [
     "pathLogger",
     "isAuthenticated",
     "checkIssuer",
@@ -96,6 +96,6 @@ module.exports.policies = {
     "isAuthenticated",
     "checkIssuer",
     "verifyEmail",
-    "verifyAdmin",
+    // "verifyAdmin",
   ],
 };

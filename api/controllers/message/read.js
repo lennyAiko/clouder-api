@@ -20,6 +20,6 @@ module.exports = {
     }
 
     // All done.
-    return;
+    return messageRecord;
   },
 };

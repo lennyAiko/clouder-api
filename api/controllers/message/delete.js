@@ -3,12 +3,17 @@ module.exports = {
 
   description: "Delete message.",
 
-  inputs: {},
+  inputs: {
+    id: {
+      type: "string",
+      required: true,
+    },
+  },
 
   exits: {},
 
   fn: async function (inputs) {
-    await Message.destroyOne({ id: this.req.params.id });
+    await Message.destroyOne({ id: inputs.id });
 
     // All done.
     return "Successful";
