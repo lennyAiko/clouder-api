@@ -39,9 +39,9 @@ module.exports.policies = {
   "logbook/create": [
     "pathLogger",
     "isAuthenticated",
-    "checkIssuer",
-    "verifyEmail",
-    "canCreate",
+    // "checkIssuer",
+    // "verifyEmail",
+    // "canCreate",
   ],
   "logbook/*": ["pathLogger", "isAuthenticated", "checkIssuer", "verifyEmail"],
   "qualification/*": [

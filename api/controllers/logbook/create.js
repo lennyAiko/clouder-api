@@ -1,5 +1,3 @@
-const Features = require("../../models/Features");
-
 // @ts-nocheck
 require("dotenv").config();
 const UPLOAD_URL = process.env.UPLOAD_URL;
