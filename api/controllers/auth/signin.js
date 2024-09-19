@@ -25,6 +25,8 @@ module.exports = {
   fn: async function ({ email, password }, exits) {
     email = email.toLowerCase();
 
+    console.log(email);
+
     let userRecord = await User.findOne({ email });
     if (!userRecord) {
       return exits.badCombo({
@@ -32,7 +34,7 @@ module.exports = {
       });
     }
 
-    if (userRecord.emailStatus == "unverified") {
+    if (userRecord.emailStatus === "unverified") {
       return exits.badCombo({
         error: "User or Email not verified",
       });
@@ -42,16 +44,16 @@ module.exports = {
       .checkPassword(password, userRecord.password)
       .intercept("incorrect", () => {
         return exits.badCombo({
-          error: "Invalid credentials",
+          error: "Invalid password",
         });
       });
 
     const features = await Features.findOne({ owner: userRecord.id });
-    if (!features) {
-      return exits.badCombo({
-        error: "Invalid credentials",
-      });
-    }
+    // if (!features) {
+    //   return exits.badCombo({
+    //     error: "Invalid credentials",
+    //   });
+    // }
 
     const token = await sails.helpers.signToken({
       user: {
@@ -64,7 +66,7 @@ module.exports = {
         status: userRecord.status,
         emailStatus: userRecord.emailStatus,
         plan: userRecord.plan,
-        subscriptions: features.subscriptions,
+        // subscriptions: features.subscriptions,
       },
       issuer: tokenIssuer,
     });
