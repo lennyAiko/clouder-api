@@ -84,6 +84,12 @@ module.exports.routes = {
   "GET /messages/:id": "message/read",
   "DELETE /messages/:id": "message/delete",
 
+  "POST /plans": "plans/create",
+  "GET /plans": "plans/fetch",
+  "GET /plans/:id": "plans/read",
+  "PATCH /plans/:id": "plans/update",
+  "DELETE /plans/:id": "plans/delete",
+
   "POST /api/paystack": "payment/paystack",
   "GET /api/paystack/callback": "payment/paystack-callback",
 };
