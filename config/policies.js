@@ -20,6 +20,15 @@ module.exports.policies = {
 
   "auth/*": "pathLogger",
   // swagger: "pathLogger",
+  "plans/fetch": "pathLogger",
+  "plans/read": "pathLogger",
+  "plans/*": [
+    "pathLogger",
+    "isAuthenticated",
+    "checkIssuer",
+    "verifyEmail",
+    "verifyAdmin",
+  ],
   "course/*": ["pathLogger", "isAuthenticated", "checkIssuer", "verifyEmail"],
   "leadership/create": [
     "pathLogger",
@@ -96,6 +105,6 @@ module.exports.policies = {
     "isAuthenticated",
     "checkIssuer",
     "verifyEmail",
-    // "verifyAdmin",
+    "verifyAdmin",
   ],
 };

@@ -51,40 +51,67 @@ module.exports = {
         if (!data) {
           return exits.badCombo("Course not found");
         }
+        if (data.feedbackRequested) {
+          return exits.badCombo("Feedback already requested");
+        }
+        await sails.helpers.mail.send.with({
+          subject: "Feedback Request on Clouder",
+          template: "email-request-feedback",
+          to: email,
+          templateData: {
+            fullName: name,
+            user: this.req.user.fullName,
+            option,
+            id,
+          },
+        });
+        await Course.updateOne({ id }).set({ feedbackRequested: true });
         break;
       case "research":
         data = await Research.findOne({ id });
         if (!data) {
           return exits.badCombo("Research not found");
         }
+        if (data.feedbackRequested) {
+          return exits.badCombo("Feedback already requested");
+        }
+        await sails.helpers.mail.send.with({
+          subject: "Feedback Request on Clouder",
+          template: "email-request-feedback",
+          to: email,
+          templateData: {
+            fullName: name,
+            user: this.req.user.fullName,
+            option,
+            id,
+          },
+        });
+        await Research.updateOne({ id }).set({ feedbackRequested: true });
         break;
       case "logbook":
         data = await Logbook.findOne({ id });
         if (!data) {
           return exits.badCombo("Logbook not found");
         }
+        if (data.feedbackRequested) {
+          return exits.badCombo("Feedback already requested");
+        }
+        await sails.helpers.mail.send.with({
+          subject: "Feedback Request on Clouder",
+          template: "email-request-feedback",
+          to: email,
+          templateData: {
+            fullName: name,
+            user: this.req.user.fullName,
+            option,
+            id,
+          },
+        });
+        await Logbook.updateOne({ id }).set({ feedbackRequested: true });
         break;
       default:
         return exits.badCombo("Invalid option");
     }
-
-    if (data.feedbackRequested) {
-      return exits.badCombo("Feedback already requested");
-    }
-
-    await sails.helpers.mail.send.with({
-      subject: "Feedback Request on Clouder",
-      template: "email-request-feedback",
-      to: email,
-      templateData: {
-        fullName: name,
-        user: this.req.user.fullName,
-        option,
-        id,
-      },
-    });
-
-    data.updateOne({ feedbackRequested: true });
 
     // All done.
     return exits.success("Feedback requested successfully");
