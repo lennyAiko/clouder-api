@@ -27,7 +27,6 @@ module.exports.routes = {
   "POST /auth/reset_password": "auth/reset-password",
   "POST /auth/resend": "auth/resend-link",
   "GET /auth/verify_email": "auth/verify-email",
-  "GET /pricing": "auth/pricing",
 
   "GET /user/signout": "user/signout",
   "GET /user/profile": "user/profile",
@@ -84,11 +83,11 @@ module.exports.routes = {
   "GET /messages/:id": "message/read",
   "DELETE /messages/:id": "message/delete",
 
-  "POST /plans": "plans/create",
   "GET /plans": "plans/fetch",
-  "GET /plans/:id": "plans/read",
-  "PATCH /plans/:id": "plans/update",
-  "DELETE /plans/:id": "plans/delete",
+  "POST /plans": "plans/create",
+  // "GET /plans/:id": "plans/read",
+  // "PATCH /plans/:id": "plans/update",
+  // "DELETE /plans/:id": "plans/delete",
 
   "POST /api/paystack": "payment/paystack",
   "GET /api/paystack/callback": "payment/paystack-callback",

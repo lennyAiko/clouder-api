@@ -1,28 +1,16 @@
 module.exports = {
+  friendlyName: "Fetch",
 
+  description: "Fetch plans.",
 
-  friendlyName: 'Fetch',
+  inputs: {},
 
-
-  description: 'Fetch plans.',
-
-
-  inputs: {
-
-  },
-
-
-  exits: {
-
-  },
-
+  exits: {},
 
   fn: async function (inputs) {
+    const plans = await Plan.find({});
 
     // All done.
-    return;
-
-  }
-
-
+    return plans;
+  },
 };

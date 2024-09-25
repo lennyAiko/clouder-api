@@ -1,28 +1,26 @@
 module.exports = {
+  friendlyName: "Create",
 
-
-  friendlyName: 'Create',
-
-
-  description: 'Create plans.',
-
+  description: "Create plans.",
 
   inputs: {
+    name: {
+      type: "string",
+      required: true,
+    },
 
+    price: {
+      type: "string",
+      required: true,
+    },
   },
 
-
-  exits: {
-
-  },
-
+  exits: {},
 
   fn: async function (inputs) {
-
+    console.log(inputs);
+    const plan = await Plan.create(inputs).fetch();
     // All done.
-    return;
-
-  }
-
-
+    return "Plan created successfully";
+  },
 };
